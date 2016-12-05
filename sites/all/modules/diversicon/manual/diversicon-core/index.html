@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Diversicon Core</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link id="josman-stylesheet" rel="stylesheet" type="text/css" href="css/josman.css">
+        <!-- <link id="bootstrap-stylesheet" rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link id="bootstrap-theme-stylesheet" rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+        -->
+        <link rel="stylesheet" type="text/css" href="website-template/css/josman.css"> 
+        <!--
+        <link  rel="stylesheet" type="text/css" href="website-template/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="website-template/css/bootstrap-theme.min.css">
+        -->
+    </head>
+    <body>
+        <div id="josman-wrapper">
+            <div id="josman-header">
+
+                <div style="position:absolute;  min-height:100px; min-width:100%; ">
+                    <a id="josman-program-logo-link" href="index.html">
+                        <img id="josman-program-logo" src="img/diversicon-core-200px.png" alt="program logo">    
+                    </a>
+
+                    <a id="josman-repo-link" href="index.html">Diversicon Core</a>
+
+
+                    <a id="josman-org-logo-link" href="http://dati.trentino.it/en/" target="_blank" style="display:none;">
+                        <img id="josman-org-logo" style="float:right; padding:10px; width:80px" src="img/josman-org-200px.png" alt="organization logo">                        
+                    </a>
+
+                    <div id="josman-nav-header">
+                        <a id="josman-home" href="index.html" class="josman-tag-selected">Home</a>                        
+                        <span id="josman-usage" style="margin-left:15px">Usage:                        
+                            
+                            
+                        <a class="josman-version-tab-header " href="0.1/index.html">0.1</a></span>
+                        <span style="margin-left:35px">
+                            <a id="josman-project" class="josman-external-link" href="https://github.com/diversicon-kb/diversicon-core" target="_blank">Repo</a>
+                            <a id="josman-wiki" class="josman-external-link" href="https://github.com/diversicon-kb/diversicon-core/wiki" target="_blank">Wiki</a> 
+                        </span>
+                    </div>
+                </div>                
+
+            </div>
+
+            <div id="josman-sidebar">
+                <div id="josman-internal-sidebar" class="josman-sidebar-block"></div>
+
+
+
+                <div id="josman-sidebar-managed-block" class="josman-sidebar-block" style="display:none;">
+
+                    <div id="josman-javadoc-link" class="josman-sidebar-page-title"><a class="josman-external-link" href="javadoc/index.html" target="_blank">Javadoc</a></div>
+                    <!-- <div><a href="CHANGES.html">Release notes</a></div> -->              
+                </div>
+
+
+            </div>
+
+            <div id="josman-content">
+                <div id="josman-internal-content">
+
+<h4><a href="#about" name="about">About</a></h4>
+<p>Simple Java library to provide a multilingual SQL knowledge base for lexicons and concepts, based upon <a href="https://github.com/dkpro/dkpro-uby" target="_blank">UBY</a>. </p>
+<table>
+  <thead>
+    <tr>
+      <th><strong>Usage</strong></th>
+      <th><strong>License</strong></th>
+      <th><strong>Roadmap</strong></th>
+      <th><strong>Contributing</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>See <a href="0.1/index.html">docs</a> </td>
+      <td>Business-friendly <a href="LICENSE.txt">Apache License v2.0</a> </td>
+      <td>See <a href="https://github.com/diversicon-kb/diversicon-core/milestones">project milestones</a> </td>
+      <td>See <a href="https://github.com/diversicon-kb/diversicon-core/wiki">the wiki</a></td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Features:</strong></p>
+<ul>
+  <li>thin wrapper over <a href="https://github.com/dkpro/dkpro-uby" target="_blank">UBY</a>, adds:<br> - transitive closure computation for <code>SynsetRelations</code><br> - simplified API for compressed XML I/O (in LMF-UBY format) and SQL backup<br> - a testing framework to quickly create graphs via api<br> - more metadata about DB and imports<br> - improved logging<br> - Ships with <a href="https://github.com/diversicon-kb/diversicon-wordnet-3.1">Wordnet 3.1 dump</a></li>
+  <li>access to DB via Hibernate</li>
+  <li>for now fully supports <a href="http://www.h2database.com/html/main.html" target="_blank">H2 DB</a>, a pure Java database (both in-memory and on disk). No separate installation is required.</li>
+  <li>dependency handling with Maven</li>
+  <li>unit tested with proper integration tests</li>
+  <li>supports Java 7+</li>
+</ul>
+<h4><a href="#dependencies" name="dependencies">Dependencies</a></h4>
+<ul>
+  <li>DKPRO <a href="https://github.com/dkpro/dkpro-uby" target="_blank">UBY</a></li>
+  <li>Hibernate</li>
+  <li><a href="http://www.h2database.com/html/main.html" target="_blank">H2</a> database</li>
+  <li>Apache Commons IO and Compress, XZ Archiver</li>
+  <li>Diversicon Model <a href="https://github.com/diversicon-kb/diversicon-model" target="_blank">Diversicon Model</a></li>
+</ul>
+<h4><a href="#projects-using-diversicon" name="projects-using-diversicon">Projects using Diversicon</a></h4>
+<ul>
+  <li><a href="https://github.com/diversicon-kb/divercli">DiverCLI</a>: a command line tool to manage Diversicons</li>
+  <li><a href="https://github.com/s-match/s-match-uby">S-Match UBY</a>: a connector for <a href="http://semanticmatching.org/s-match.html" target="_blank">S-match</a> semantic framework</li>
+</ul>
+<h4><a href="#credits" name="credits">Credits</a></h4>
+<ul>
+  <li>Programming: David Leoni - Heriot Watt University, Edinburgh - david.leoni at unitn.it</li>
+  <li>Architecture: Gabor Bella - DISI, University of Trento - gabor.bella at unitn.it</li>
+</ul></div>
+            </div>
+
+        </div>        
+        <script src="js/jquery-1.11.2.min.js"></script>
+        <!-- <script src="js/bootstrap-3.3.4.min.js"></script> -->
+
+        <!-- quick and silly hack to get the file -->
+        <script src="website-template/js/jquery-1.11.2.min.js"></script>
+        <!-- quick and silly hack to get the file -->
+        <script src="website-template/js/jquery-3.3.4.min.js"></script>
+        <script>
+            // idotic CSS in style doesn't work, so use jquery instead: 
+            // also would like pre code but this will select code and won't work. There aren't selectors for parents
+
+            $("pre").css("max-width", "680px").css("overflow-x", "auto");
+
+            /* We don't support this yet...
+             $('.josman-tree-toggle').click(function () {
+             $(this).parent().children('ul.tree').toggle(200);
+             return false;
+             });
+             */
+        </script>
+    </body>
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DiverCLI</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link id="josman-stylesheet" rel="stylesheet" type="text/css" href="../css/josman.css">
+        <!-- <link id="bootstrap-stylesheet" rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+        <link id="bootstrap-theme-stylesheet" rel="stylesheet" type="text/css" href="../css/bootstrap-theme.min.css">
+        -->
+        <link rel="stylesheet" type="text/css" href="website-template/css/josman.css"> 
+        <!--
+        <link  rel="stylesheet" type="text/css" href="website-template/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="website-template/css/bootstrap-theme.min.css">
+        -->
+    </head>
+    <body>
+        <div id="josman-wrapper">
+            <div id="josman-header">
+
+                <div style="position:absolute;  min-height:100px; min-width:100%; ">
+                    <a id="josman-program-logo-link" href="../index.html">
+                        <img id="josman-program-logo" src="../img/divercli-200px.png" alt="program logo">    
+                    </a>
+
+                    <a id="josman-repo-link" href="../index.html">DiverCLI</a>
+
+
+                    <a id="josman-org-logo-link" href="http://dati.trentino.it/en/" target="_blank" style="display:none;">
+                        <img id="josman-org-logo" style="float:right; padding:10px; width:80px" src="../img/josman-org-200px.png" alt="organization logo">                        
+                    </a>
+
+                    <div id="josman-nav-header">
+                        <a id="josman-home" href="../index.html">Home</a>                        
+                        <span id="josman-usage" style="margin-left:15px">Usage:                        
+                            
+                            
+                        <a class="josman-version-tab-header josman-tag-selected" href="../0.1/index.html">0.1</a></span>
+                        <span style="margin-left:35px">
+                            <a id="josman-project" class="josman-external-link" href="https://github.com/diversicon-kb/divercli" target="_blank">Repo</a>
+                            <a id="josman-wiki" class="josman-external-link" href="https://github.com/diversicon-kb/divercli/wiki" target="_blank">Wiki</a> 
+                        </span>
+                    </div>
+                </div>                
+
+            </div>
+
+            <div id="josman-sidebar">
+                <div id="josman-internal-sidebar" class="josman-sidebar-block"><ul class="josman-tree"><li><div class="josman-sidebar-page-title josman-sidebar-selected">Usage</div><ul class="josman-tree"><div><a href="#getting-started">Getting started</a></div><div><a href="#your-first-project">Your first project</a></div><div><a href="#configuration">Configuration</a></div><div><a href="#creating-databases">Creating databases</a></div><div><a href="#importing-xmls">Importing XMLs</a></div><div><a href="#exporting-xmls">Exporting XMLs</a></div><div><a href="#import-logs">Import logs</a></div><div><a href="#logging">Logging</a></div></ul></li><li><div class="josman-sidebar-page-title"><a href="CHANGES.html">Release notes</a></div><ul class="josman-tree"></ul></li></ul></div>
+
+
+
+                <div id="josman-sidebar-managed-block" class="josman-sidebar-block">
+
+                    <div id="josman-javadoc-link" class="josman-sidebar-page-title"><a class="josman-external-link" href="javadoc/index.html" target="_blank">Javadoc</a></div>
+                    <!-- <div><a href="CHANGES.html">Release notes</a></div> -->              
+                </div>
+
+
+            </div>
+
+            <div id="josman-content">
+                <div id="josman-internal-content">
+<p>This release allows to perform basic import / export of XML in IBY-LMF format and SQL dumps. Some function to query db metadata and import log is also provided.</p>
+<h3><a href="#getting-started" name="getting-started">Getting started</a></h3>
+<p>You can download Diver CLI <a href="../releases/download/divercli-0.1.0/divercli-0.1.0.zip" target="_blank"> from here</a>, then unzip somewhere on your system. In case updates are available, version numbers follow <a href="http://semver.org/" target="_blank">semantic versioning</a> rules.<br>This manual assumes you have added <code>bin/divercli</code> to the path. </p>
+<p>To see usage commands:</p>
+<p>In Linux / Mac, from terminal just type</p>
+<pre><code>bin/divercli
+</code></pre>
+<p>In Windows, click on Start menu, run command <code>cmd</code> and in the console type</p>
+<pre><code>bin\divercli.bat
+</code></pre>
+<p>You should see a command list like this:</p>
+<pre><code class="bash">&gt; divercli 
+
+Usage: &lt;main class&gt; [options] [command] [command options]
+  Options:
+    --help
+       
+       Default: false
+    --http-proxy
+       http proxy
+    --prj
+       Path to the project directory. Defaults to current directory.
+    --reset-global-config
+       Resets the configuration in USER_DIR/.config/divercli/
+       Default: false
+    --timeout
+       timeout in milliseconds
+       Default: 15000
+  Commands:
+    export-xml      Export a lexical resource to an XML file in UBY-LMF format.
+      Usage: export-xml [options] Filepath of the xml to generate.
+        Options:
+          --compress
+             Compress the file into a zip archive
+             Default: false
+        * --name
+             The name of the lexical resource to export.
+
+    export-sql      Export the database into a sql dump
+      Usage: export-sql [options] The filepath where to save the generated sql dump
+        Options:
+          --compress
+             Compress the file into a zip archive
+             Default: false
+
+    init      Sets up current folder with a new database project.
+      Usage: init [options]
+        Options:
+          --db
+             Initialize the project from a .h2.db dump, which can be compressed
+             and expressed as a URL. For Wordnet 3.1 packaged dump, you can use
+             classpath:/div-wn31.h2.db.xz
+          --sql
+             Initalize the project with a h2 database from a sql dump, which can
+             be compressed and expressed as a URL
+
+    db-reset      Reset current database. If it doesn't exist it is created empty.
+      Usage: db-reset [options]
+
+    log      Show imports done so far.
+      Usage: log [options]
+
+    import-show      Display detailed import log of given import id.
+      Usage: import-show [options] the import id to show
+
+    import-xml      Import into the db lexical resources in UBY-LMF XML format. Resources can be compressed and expressed as urls like classpath:/smartphones.xml
+      Usage: import-xml [options] a space separated list of XML files in UBY-LMF format. Lexical resources must have a 'name' attribute. If there are already present resources with the same name, content will be merged.
+        Options:
+        * --author, -a
+             The author of the operations on the db.
+        * --description, -d
+             The description of the operation being performed on the db.
+          --skip-augment, -s
+             Skips augmenting the db graph to speed up  operations requiring the
+             transitive closure.
+             Default: false
+
+    db-augment      Augment the db graph to speed up  operations requiring the transitive closure.
+      Usage: db-augment [options]
+
+    help      Print help about a given command
+      Usage: help [options] Prints help about a given command.
+
+
+
+</code></pre>
+<p>To get more help about a specific command (say <code>import-xml</code>), you can issue <code>help</code> command: </p>
+<pre><code class="bash">&gt; divercli help import-xml
+
+
+Import into the db lexical resources in UBY-LMF XML format. Resources can be compressed and expressed as urls like classpath:/smartphones.xml
+Usage: import-xml [options] a space separated list of XML files in UBY-LMF format. Lexical resources must have a 'name' attribute. If there are already present resources with the same name, content will be merged.
+  Options:
+  * --author, -a
+       The author of the operations on the db.
+  * --description, -d
+       The description of the operation being performed on the db.
+    --skip-augment, -s
+       Skips augmenting the db graph to speed up  operations requiring the
+       transitive closure.
+       Default: false
+
+
+</code></pre>
+<h3><a href="#your-first-project" name="your-first-project">Your first project</a></h3>
+<p>In DiverCli, a project is a folder with configuration for connecting to a database, plus possibly the database itself and other custom scripts. It might look like this :</p>
+<pre><code>divercli.ini
+my-diversicon.db.h2
+my-script.sql
+ . 
+ .
+ .
+
+</code></pre>
+<p>DiverCli comes with full support for <a href="http://h2database.com" target="_blank"> H2 database </a>, which is shipped with DiverCli and doesn't require separate installation. </p>
+<p>Let's create our first H2 file-based database with Wordnet 3.1 inside:</p>
+<pre><code class="bash">&gt; divercli --prj wn31 init --db classpath:/div-wn31.h2.db.xz
+
+Restoring database:   classpath:/div-wn31.h2.db.xz
+                to:   wn31/wn31.h2.db  ...
+Database created in 17secs
+
+</code></pre>
+<p>In detail:</p>
+<ul>
+  <li><code>--prj wn31</code> tells DiverCLI in which folder to put the project</li>
+  <li><code>init</code> is the actual comand given to DiverCli</li>
+  <li><code>--db</code> specifies to <code>init</code> command where to take the db. In this case Wordnet 3.1 is pre-packaged in the DiverCLI distribution so we picked it with the special URL beginning with <code>classpath:</code>.</li>
+</ul>
+<p>Notice that <code>--prj</code> always goes <em>before</em> commands. </p>
+<p>These files where generated:</p>
+<pre><code>&gt; cd wn31
+&gt; dir
+
+divercli.ini  wn31.h2.db
+      
+        
+</code></pre>
+<p>The file <code>divercli.ini</code> tells DiverCli where to connect when we launch the tool from the project directory. In this particular case the database is in the same folder, but it could be anywhere, even a remote connection. </p>
+<p>You can check things are working by issuing the <code>log</code> command, which will show a status of the database and a log of the imports done so far:</p>
+<pre><code class="bash">&gt; divercli log
+
+Connecting to database   jdbc:h2:file:wn31
+Connected!
+
+ Welcome to
+         _  _                          _                     
+      __| |(_)__   __  ___  _ __  ___ (_)  ___   ___   _ __  
+     / _` || |\ \ / / / _ \| '__|/ __|| | / __| / _ \ | '_ \ 
+    | (_| || | \ V / |  __/| |   \__ \| || (__ | (_) || | | |
+     \__,_||_|  \_/   \___||_|   |___/|_| \___| \___/ |_| |_|
+                                                             
+    
+
+
+ Schema version: 1.0   Data version: -
+
+
+
+
+IMPORT ID: 2   LEXICAL RESOURCE: div-wn31   IMPORT AUTHOR: David Leoni
+NAMESPACE: wn31:https://github.com/diversicon-kb/diversicon-wordnet-3.1
+FROM FILE: /home/david.leoni/Da/prj/divmaker/dumps/diversicon/div-wn31.xml
+STARTED: Oct 25, 2016   ENDED: Oct 25, 2016
+Import for making Wordnet 3.1 Diversicon distribution
+
+
+
+Disconnected.
+
+
+</code></pre>
+<h3><a href="#configuration" name="configuration">Configuration</a></h3>
+<p>To determine to which database to connect, DiverCli uses configuration file <code>divercli.ini</code> inside project directory. You can edit the file to connect to the database of choice, but note currently only <a href="http://www.h2database.com" target="_blank">H2 databases </a> are supported (DiverCli uses H2 v1.3.160). </p>
+<p>When a database is created default username is <code>root</code> and password is <code>pass</code>. </p>
+<h4><a href="#global-configuration" name="global-configuration">Global configuration</a></h4>
+<p>There is also global config in <code>USER_HOME/.config/divercli/divercli.ini</code> shared by all projects. Settings there will be overridden by individual project settings. </p>
+<p>In case global configuration gets messed up, you can reset it by issuing:</p>
+<pre><code class="bash">&gt; divercli --reset-global-config
+
+
+Resetting user configuration at /home/divergeek/.config/divercli   ...
+Done.
+
+
+</code></pre>
+<h4><a href="#java-options" name="java-options">Java options</a></h4>
+<p>To set Java options in Linux / Mac (for example to give DiverCli more memory), you can do something like:</p>
+<pre><code>JAVA_OPTS="-Xms1g -Xmx3g -XX:-UseGCOverheadLimit" divercli db-augment
+</code></pre>
+<h3><a href="#creating-databases" name="creating-databases">Creating databases</a></h3>
+<p>Currently you can create H2 databases which can be empty or already containing Wordnet 3.1. Let's see how to do it. </p>
+<h4><a href="#creating-empty-database" name="creating-empty-database">Creating empty database</a></h4>
+<p>You can create an empty database in directory ?myprj? by issuing <code>divercli --prj myprj init</code>:</p>
+<pre><code class="bash">&gt; divercli --prj myprj init
+
+Recreating tables in database  jdbc:h2:file:myprj/myprj    ...
+Done recreating tables in database:  jdbc:h2:file:myprj/myprj
+
+</code></pre>
+<pre><code class="bash">&gt; cd myprj
+&gt; dir
+
+divercli.ini  myprj.h2.db  myprj.lock.db  myprj.trace.db
+
+</code></pre>
+<h4><a href="#creating-wordnet-3-1-database" name="creating-wordnet-3-1-database">Creating Wordnet 3.1 database</a></h4>
+<p>Wordnet 3.1 is packaged within DiverCli, in the format of a <a href="http://www.h2database.com" target="_blank">H2 database</a>. You can also <a href="$exec{wn31.manualWebsite}">find it</a> in LMF XML and SQL dump formats. You can unpack the database where you like (i.e. <code>wn31/</code> directory) by issuing:</p>
+<pre><code class="bash">&gt; divercli --prj wn31 init --db classpath:/div-wn31.h2.db.xz
+
+Restoring database:   classpath:/div-wn31.h2.db.xz
+                to:   wn31/wn31.h2.db  ...
+Database created in 17secs
+
+</code></pre>
+<pre><code>&gt; cd wn31
+&gt; dir
+
+divercli.ini  wn31.h2.db
+ 
+</code></pre>
+<h3><a href="#importing-xmls" name="importing-xmls">Importing XMLs</a></h3>
+<h4><a href="#preprocessing-xmls" name="preprocessing-xmls">Preprocessing XMLs</a></h4>
+<p>TODO check this</p>
+<pre><code>java -cp  ~/.m2/repository/org/basex/basex/8.5/basex-8.5.jar org.basex.BaseX -bold-prefix=wn31 -bnew-prefix=peppo -binfile=../../../src/testources/experiments/xml/basex-2.xml  -o prova.xml   src/main/resources/rename-prefixes.xql
+</code></pre>
+<p>You can import an LMF xml this way:</p>
+<p>TODO</p>
+<h3><a href="#exporting-xmls" name="exporting-xmls">Exporting XMLs</a></h3>
+<p>You can export a <em>LexicalResource</em> by issuing this command </p>
+<pre><code class="bash">&gt; divercli --prj myprj init
+
+Recreating tables in database  jdbc:h2:file:myprj/myprj    ...
+Done recreating tables in database:  jdbc:h2:file:myprj/myprj
+
+</code></pre>
+<pre><code class="bash">&gt; cd myprj
+</code></pre>
+<h3><a href="#import-logs" name="import-logs">Import logs</a></h3>
+<p>For each resource imported via DiverCli, an import log is available. For example, here we show the log for Wordnet 3.1:</p>
+<pre><code class="bash">&gt; divercli --prj wn31 init --db classpath:/div-wn31.h2.db.xz
+
+Restoring database:   classpath:/div-wn31.h2.db.xz
+                to:   wn31/wn31.h2.db  ...
+Database created in 17secs
+
+</code></pre>
+<pre><code class="bash">&gt; cd wn31
+</code></pre>
+<pre><code class="bash">&gt; divercli log
+
+Connecting to database   jdbc:h2:file:wn31
+Connected!
+
+ Welcome to
+         _  _                          _                     
+      __| |(_)__   __  ___  _ __  ___ (_)  ___   ___   _ __  
+     / _` || |\ \ / / / _ \| '__|/ __|| | / __| / _ \ | '_ \ 
+    | (_| || | \ V / |  __/| |   \__ \| || (__ | (_) || | | |
+     \__,_||_|  \_/   \___||_|   |___/|_| \___| \___/ |_| |_|
+                                                             
+    
+
+
+ Schema version: 1.0   Data version: -
+
+
+
+
+IMPORT ID: 2   LEXICAL RESOURCE: div-wn31   IMPORT AUTHOR: David Leoni
+NAMESPACE: wn31:https://github.com/diversicon-kb/diversicon-wordnet-3.1
+FROM FILE: /home/david.leoni/Da/prj/divmaker/dumps/diversicon/div-wn31.xml
+STARTED: Oct 25, 2016   ENDED: Oct 25, 2016
+Import for making Wordnet 3.1 Diversicon distribution
+
+
+
+Disconnected.
+
+
+</code></pre>
+<p>Note each import has a numerical identifier. To get more details about a single import (like warnings occurred during the import), you can use this command:</p>
+<pre><code class="bash">&gt; divercli import-show 2
+
+Connecting to database   jdbc:h2:file:wn31
+Connected!
+
+ Welcome to
+         _  _                          _                     
+      __| |(_)__   __  ___  _ __  ___ (_)  ___   ___   _ __  
+     / _` || |\ \ / / / _ \| '__|/ __|| | / __| / _ \ | '_ \ 
+    | (_| || | \ V / |  __/| |   \__ \| || (__ | (_) || | | |
+     \__,_||_|  \_/   \___||_|   |___/|_| \___| \___/ |_| |_|
+                                                             
+    
+
+
+IMPORT ID: 2   LEXICAL RESOURCE: div-wn31   IMPORT AUTHOR: David Leoni
+NAMESPACE: wn31:https://github.com/diversicon-kb/diversicon-wordnet-3.1
+FROM FILE: /home/david.leoni/Da/prj/divmaker/dumps/diversicon/div-wn31.xml
+STARTED: Oct 25, 2016   ENDED: Oct 25, 2016
+Import for making Wordnet 3.1 Diversicon distribution
+
+  No log messages were produced during the import.
+
+
+
+Disconnected.
+
+
+</code></pre>
+<h3><a href="#logging" name="logging">Logging</a></h3>
+<p>TODO review</p>
+<p>DiverCLI uses <a href="http://www.slf4j.org" target="_blank">SLF4J </a> logging system with <a href="http://logback.qos.ch/" target="_blank"> Logback</a> as SLF4J implementation. They are configured by default via xml files looked upon in this order :</p>
+<h4><a href="#logging-during-execution" name="logging-during-execution">Logging during execution</a></h4>
+<ol>
+  <li>whatever is passed by command line: <code>java -jar divercli.jar -Dlogback.configurationFile=path-to-my-logback.xml</code></li>
+  <li><code>logback.xml</code> in <a href="src/main/resources/logback.xml">main resources</a>.</li>
+</ol>
+<h4>Logging when testing (for developers)</h4>
+<ol>
+  <li>whatever is passed by command line: <code>mvn test -Dlogback.configurationFile=path-to-my-logback.xml</code></li>
+  <li><code>conf/logback-test.xml</code> as indicated in Maven surefire plugin configuration</li>
+  <li><code>logback-test.xml</code> in <a href="src/test/resources/logback-test.xml">test resources</a>.</li>
+</ol>
+<p>CAVEAT: stupid Eclipse doesn't pick those surefire properties <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=388683">by design</a> , nor allows to apply run settings to all tests (O_o) so I went to <code>Windows-&gt;Preferences-&gt;Java-&gt;Installed JREs-&gt;Default one-&gt;Edit</code> and set default VM arguments to <code>-Dlogback.configurationFile=conf/logback-test.xml</code>. It's silly but could somewhat make sense for other projects too. </p></div>
+            </div>
+
+        </div>        
+        <script src="../js/jquery-1.11.2.min.js"></script>
+        <!-- <script src="../js/bootstrap-3.3.4.min.js"></script> -->
+
+        <!-- quick and silly hack to get the file -->
+        <script src="website-template/js/jquery-1.11.2.min.js"></script>
+        <!-- quick and silly hack to get the file -->
+        <script src="website-template/js/jquery-3.3.4.min.js"></script>
+        <script>
+            // idotic CSS in style doesn't work, so use jquery instead: 
+            // also would like pre code but this will select code and won't work. There aren't selectors for parents
+
+            $("pre").css("max-width", "680px").css("overflow-x", "auto");
+
+            /* We don't support this yet...
+             $('.josman-tree-toggle').click(function () {
+             $(this).parent().children('ul.tree').toggle(200);
+             return false;
+             });
+             */
+        </script>
+    </body>
+</html>
