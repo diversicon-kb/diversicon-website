@@ -6,5 +6,7 @@ set -e
 # statement, part of a && or || list, or if the command's return value is being inverted via !
 
 drush dl redirect-7.x-1.0-rc3
+drush dl smtp-7.x-1.4
 
 drush -y en redirect
+drush -y en smtp
