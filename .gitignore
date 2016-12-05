@@ -5,8 +5,14 @@
 
 /sites/*/settings*.php
 
+# we are going to install modules with sites/all/modules/diversicon/install.sh
+/sites/*/modules/*
+!/sites/*/modules/diversicon
 
-#  ----------------------------
+
+#  ------   DIVERSICON END  ----------------------
+
+
 
 # Ignore paths that contain user-generated content.
 /sites/*/files
