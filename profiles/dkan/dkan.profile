@@ -395,7 +395,11 @@ function dkan_delete_markdown_buttons(&$context) {
  */
 function dkan_group_link_delete(&$context) {
   $context['message'] = t('Removing og_extra groups link');
-  db_query('DELETE FROM {menu_links} WHERE link_path = :link_path LIMIT 1', array(':link_path' => 'groups'));
+  
+  /* db_query('DELETE FROM {menu_links} WHERE link_path = :link_path LIMIT 1', array(':link_path' => 'groups'));  */
+  
+  /* diversicon: removed LIMIT 1 because it is not supported by postgres - it's wrong but who cares   */
+  db_query('DELETE FROM {menu_links} WHERE link_path = :link_path', array(':link_path' => 'groups')); 
 }
 
 /**
