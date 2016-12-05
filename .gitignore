@@ -1,3 +1,13 @@
+
+#  -----      DIVERSICON  -----------------------
+
+# Oddly enough, settings are not gitignored by default, see here: https://www.drupal.org/node/1118400
+
+/sites/*/settings*.php
+
+
+#  ----------------------------
+
 # Ignore paths that contain user-generated content.
 /sites/*/files
 /sites/*/private
