@@ -10,4 +10,4 @@ drush dl smtp-7.x-1.4
 
 drush -y en redirect
 drush -y en smtp
-
+drush -y en blog 
