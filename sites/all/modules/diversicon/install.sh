@@ -8,3 +8,4 @@ set -e
 drush dl redirect-7.x-1.0-rc3
 
 drush -y en redirect
+drush -y en blog 
