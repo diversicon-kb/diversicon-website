@@ -12,4 +12,5 @@ drush dl hierarchical_term_formatter-7.x-1.0
 drush -y en redirect
 drush -y en smtp
 drush -y en hierarchical_term_formatter
+drush -y en blog 
 
