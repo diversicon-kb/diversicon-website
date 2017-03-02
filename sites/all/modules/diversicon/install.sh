@@ -13,4 +13,3 @@ drush -y en redirect
 drush -y en smtp
 drush -y en hierarchical_term_formatter
 drush -y en blog 
-
