@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the diversicon Other Overrides feature.
+ */
+
+include_once 'diversicon_other_overrides.features.inc';

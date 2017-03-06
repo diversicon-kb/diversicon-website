@@ -8,8 +8,10 @@ set -e
 drush dl redirect-7.x-1.0-rc3
 drush dl smtp-7.x-1.4
 drush dl hierarchical_term_formatter-7.x-1.0
+drush dl features_override-7.x-2.0-rc3
 
 drush -y en redirect
 drush -y en smtp
 drush -y en hierarchical_term_formatter
 drush -y en blog 
+drush -y en features_override
