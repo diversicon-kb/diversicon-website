@@ -1,0 +1,8 @@
+expr,eval
+eu.kidf.diversicon.core.Diversicons.getProvenanceId(),div
+eu.kidf.diversicon.core.Diversicons.SCHEMA_1_PUBLIC_URL,http://diversicon-kb.eu/schema/1/diversicon.xsd
+eu.kidf.diversicon.data.DivUpper.PREFIX,div
+eu.kidf.diversicon.core.Diversicons.SCHEMA_1_0_PUBLIC_URL,http://diversicon-kb.eu/schema/1.0/diversicon.xsd
+eu.kidf.diversicon.core.Diversicons.DTD_1_0_PUBLIC_URL,http://diversicon-kb.eu/schema/1.0/diversicon.dtd
+eu.kidf.diversicon.data.DivUpper.SYNSET_ROOT_DOMAIN,div_ss_n_domain
+eu.kidf.diversicon.core.Diversicons.DTD_1_PUBLIC_URL,http://diversicon-kb.eu/schema/1schema/1/diversicon.dtd
