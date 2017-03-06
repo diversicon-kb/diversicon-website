@@ -7,7 +7,7 @@
 
 # we are going to install modules with sites/all/modules/diversicon/install.sh
 /sites/*/modules/*
-!/sites/*/modules/diversicon
+!/sites/*/modules/diversicon*
 
 
 #  ------   DIVERSICON END  ----------------------

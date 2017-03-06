@@ -1,0 +1,11 @@
+name = diversicon deps
+description = trial
+core = 7.x
+package = Diversicon
+version = 7.x-1.0
+dependencies[] = blog
+dependencies[] = features_override
+dependencies[] = hierarchical_term_formatter
+dependencies[] = redirect
+dependencies[] = smtp
+features[features_api][] = api:2
