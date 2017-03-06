@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the diversicon feature.
+ */
+
+include_once 'diversicon.features.inc';
