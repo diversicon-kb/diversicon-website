@@ -108,6 +108,17 @@ DirectoryIndex index.php index.html index.htm
   # If your site is running in a VirtualDocumentRoot at http://example.com/,
   # uncomment the following line:
   # RewriteBase /
+  
+  # DIVERSICON START
+  
+  See 'better redirection' issue:  https://github.com/diversicon-kb/diversicon-website/issues/16
+
+  RewriteRule ^manual/(.*)$ http://opendata-dev.disi.unitn.it:45601/sites/all/modules/diversicon/overlay/manual/$1 [P]
+  RewriteRule ^schema/(.*)$ http://opendata-dev.disi.unitn.it:45601/sites/all/modules/diversicon/overlay/schema/$1 [P]
+  RewriteRule ^img/(.*)$ http://opendata-dev.disi.unitn.it:45601/sites/all/modules/diversicon/overlay/img/$1 [P]
+  
+  # DIVERSICON END
+  
 
   # Pass all requests not referring directly to files in the filesystem to
   # index.php. Clean URLs are handled in drupal_environment_initialize().
