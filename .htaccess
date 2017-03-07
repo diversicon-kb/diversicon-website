@@ -111,7 +111,7 @@ DirectoryIndex index.php index.html index.htm
   
   # DIVERSICON START
   
-  See 'better redirection' issue:  https://github.com/diversicon-kb/diversicon-website/issues/16
+  # See 'better redirection' issue:  https://github.com/diversicon-kb/diversicon-website/issues/16
 
   RewriteRule ^manual/(.*)$ http://opendata-dev.disi.unitn.it:45601/sites/all/modules/diversicon/overlay/manual/$1 [P]
   RewriteRule ^schema/(.*)$ http://opendata-dev.disi.unitn.it:45601/sites/all/modules/diversicon/overlay/schema/$1 [P]
