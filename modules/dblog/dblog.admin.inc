@@ -292,7 +292,14 @@ function theme_dblog_message($variables) {
     }
     // Message to translate with injected variables.
     else {
-      $output = t($event->message, unserialize($event->variables));
+    
+      // DIVERSICON fix for dblog failing on NULL messages: https://github.com/diversicon-kb/diversicon-website/issues/26
+      // DIVERSICON COMMENTED
+      // $output = t($event->message, unserialize($event->variables));
+      // DIVERSICON START
+      $args = unserialize($event->variables);
+      $output = t($event->message, is_array($args) ? $args : array());
+      // DIVERSICON END
     }
     // If the output is expected to be a link, strip all the tags and
     // special characters by using filter_xss() without any allowed tags.
