@@ -113,9 +113,9 @@ DirectoryIndex index.php index.html index.htm
   
   # See 'better redirection' issue:  https://github.com/diversicon-kb/diversicon-website/issues/16
 
-  RewriteRule ^manual/(.*)$ http://opendata-dev.disi.unitn.it:45601/sites/all/modules/diversicon/overlay/manual/$1 [P]
-  RewriteRule ^schema/(.*)$ http://opendata-dev.disi.unitn.it:45601/sites/all/modules/diversicon/overlay/schema/$1 [P]
-  RewriteRule ^img/(.*)$ http://opendata-dev.disi.unitn.it:45601/sites/all/modules/diversicon/overlay/img/$1 [P]
+  RewriteRule ^manual/(.*)$ sites/all/modules/diversicon/overlay/manual/$1 [P]
+  RewriteRule ^schema/(.*)$ sites/all/modules/diversicon/overlay/schema/$1 [P]
+  RewriteRule ^img/(.*)$    sites/all/modules/diversicon/overlay/img/$1 [P]
   
   # DIVERSICON END
   
