@@ -4,6 +4,7 @@
 # Oddly enough, settings are not gitignored by default, see here: https://www.drupal.org/node/1118400
 
 /sites/*/settings*.php
+/sites/*/settings*.php.bak
 
 # we are going to install modules with sites/all/modules/diversicon/install.sh
 /sites/*/modules/*
