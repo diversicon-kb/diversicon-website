@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DiverCLI</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link id="josman-stylesheet" rel="stylesheet" type="text/css" href="../css/josman.css">
+        <!-- <link id="bootstrap-stylesheet" rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+        <link id="bootstrap-theme-stylesheet" rel="stylesheet" type="text/css" href="../css/bootstrap-theme.min.css">
+        -->
+        <link rel="stylesheet" type="text/css" href="website-template/css/josman.css"> 
+        <!--
+        <link  rel="stylesheet" type="text/css" href="website-template/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="website-template/css/bootstrap-theme.min.css">
+        -->
+    </head>
+    <body>
+        <div id="josman-wrapper">
+            <div id="josman-header">
+
+                <div style="position:absolute;  min-height:100px; min-width:100%; ">
+                    <a id="josman-program-logo-link" href="../index.html">
+                        <img id="josman-program-logo" src="../img/divercli-200px.png" alt="program logo">    
+                    </a>
+
+                    <a id="josman-repo-link" href="../index.html">DiverCLI</a>
+					
+					<div id="josman-dev-warning">WARNING: THIS DOCUMENTATION IS <br>ABOUT  UNRELEASED SOFTWARE <br>THAT CAN CHANGE ANYTIME</div>
+					
+                    <a id="josman-org-logo-link" href="http://kidf.eu" target="_blank" title="KiD Foundation">
+                        <img id="josman-org-logo" src="../img/org-200px.png" alt="organization logo">                        
+                    </a>
+					
+
+                    <div id="josman-nav-header">
+                        <a id="josman-home" href="../index.html">Home</a>                        
+                        <span id="josman-usage" style="margin-left:15px">Usage:                        
+                            
+                            
+                        <a class="josman-version-tab-header josman-tag-selected" href="../0.1/index.html">0.1</a></span>
+                        <span style="margin-left:35px">
+                            <a id="josman-project" class="josman-external-link" href="https://github.com/diversicon-kb/divercli" target="_blank">Github</a>
+                            <a id="josman-wiki" class="josman-external-link" href="https://github.com/diversicon-kb/divercli/wiki" target="_blank">Wiki</a> 
+                        </span>
+                    </div>
+                </div>                
+
+            </div>
+
+            <div id="josman-sidebar">
+                <div id="josman-internal-sidebar" class="josman-sidebar-block"><ul class="josman-tree"><li><div class="josman-sidebar-page-title"><a href="index.html">Usage</a></div><ul class="josman-tree"></ul></li><li><div class="josman-sidebar-page-title"><a href="Commands.html">Commands</a></div><ul class="josman-tree"></ul></li><li><div class="josman-sidebar-page-title josman-sidebar-selected">Tools</div><ul class="josman-tree"><div><a href="#basex">BaseX</a></div><div><a href="#xquery">XQuery</a></div><div><a href="#h2">H2</a></div><div><a href="#squirrel-sql">Squirrel SQL</a></div></ul></li><li><div class="josman-sidebar-page-title"><a href="Developers.html">Developers</a></div><ul class="josman-tree"></ul></li><li><div class="josman-sidebar-page-title"><a href="Configuration.html">Configuration</a></div><ul class="josman-tree"></ul></li><li><div class="josman-sidebar-page-title"><a href="CHANGES.html">Release notes</a></div><ul class="josman-tree"></ul></li></ul></div>
+
+
+
+                <div id="josman-sidebar-managed-block" class="josman-sidebar-block">
+
+                    <div id="josman-javadoc-link" class="josman-sidebar-page-title"><a class="josman-external-link" href="javadoc/index.html" target="_blank">Javadoc</a></div>
+                    <!-- <div><a href="CHANGES.html">Release notes</a></div> -->              
+                </div>
+
+
+            </div>
+
+            <div id="josman-content">
+                <div id="josman-internal-content"><p>For preprocessing and quering XMLs we suggest <a href="#basex">BaseX</a> database, while for browsing H2 SQL databases you can use the included <a href="#h2">H2</a> server. A better tool for db management could be <a href="#squirrel-sql">SquirrelSQL</a></p>
+<h3><a href="#basex" id="basex">BaseX</a></h3>
+<p>If you need to browse large XMLs you can you <a href="http://basex.org/products/download/all-downloads/" target="_blank">BaseX</a> tool.</p>
+<p>For example, supposing you:</p>
+<p>1) installed <a href="http://basex.org/products/download/all-downloads/" target="_blank">BaseX</a><br>
+2) <code>basex</code> executable is on your path</p>
+<p>Here we show how to load the <a href="http://diversicon-kb.eu/dataset/diversicon-wordnet-31/resource/xml" target="_blank">Diversicon Wordnet 3.1 XML</a>:</p>
+<p>Click on new database and the panel that pops up, put this in <code>General</code> tab:</p>
+<img src="img/basex-new-1.png" width="500px">
+<p>In <code>Indexes</code> tab check <code>Full-text</code>:</p>
+<img src="img/basex-new-2.png" width="500px">
+<p>Then press OK, you should see a screen like this:</p>
+<img src="img/basex-new-3.png" width="500px">
+<h3><a href="#xquery" id="xquery">XQuery</a></h3>
+<p>If you need to transform XML to do some preprocessing before importing them into Diversicon, using XQuery language with the <a href="#basex">BaseX</a> implementation could be a good choice.</p>
+<p>For some common tasks, we already provide scripts in <code>$exec{eu.kidf.diversicon.cli.DiverCli.SCRIPTS_XML_PATH}</code></p>
+<p>For example, suppose you have BaseX installed and want to rename prefixes of an XML.<br>
+From DiverCli installation directory you coud run a command like this:</p>
+<pre><code>
+basex -bold-prefix=sm -bnew-prefix=mysm -bin-file=lexres/smartphones.xml  -o my-smartphones.xml  scripts/rename-prefixes.xql
+
+</code></pre>
+<p><strong>NOTE</strong>: this script is just an example, to replace everything you will still have to fix manually the xmlns: with the new prefix !</p>
+<p>To edit XQuery files, you might use <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml" target="_blank">XML Tools extension.</a></p>
+<h3><a href="#h2" id="h2">H2</a></h3>
+<p>To browse H2 databases, you can use <code>H2</code> own browsing tool. It is included in DiverCLI distribution under <code>bin/h2</code> directory.</p>
+<p>To run it on Linux / Mac:</p>
+<pre><code class="language-bash">
+cd bin/h2/bin
+
+./h2.sh
+
+</code></pre>
+<p>On Windows:</p>
+<pre><code class="language-bash">
+cd bin/h2/bin
+
+h2.bat
+
+</code></pre>
+<p>This should open a browser pointed at a screen like the following, where we try to connect to a <a href="http://diversicon-kb.eu/dataset/diversicon-wordnet-31/resource/h2db" target="_blank">Diversicon Wordnet H2 DB</a> :</p>
+<img src="img/h2-1.png">
+<p>If you put the correct db url, you should see a panel like this, with all the tables listed in the left panel:</p>
+<img src="img/h2-correct.png">
+<p>If you put the wrong url, probably h2 will create a new empty database at that url and you will see this panel:</p>
+<img src="img/h2-wrong.png">
+<h3><a href="#squirrel-sql" id="squirrel-sql">Squirrel SQL</a></h3>
+<p><a href="http://squirrel-sql.sourceforge.net" target="_blank"> Squirrel SQL</a> has lots of features, although sometimes UI might look a bit confusing.</p>
+<img src="img/squirrel-sql.png" width="200px">
+<p>Before connecting to the database, you need to tell Squirrel where the H2 driver is. You can find<br>
+H2 binary jar inside the DiverCLI distribution, and configure Squirrel like this:</p>
+<img src="img/squirrel-sql-h2-driver.png" width="500px">
+<p>Afterwards, you can proceed defining an alias to a database. For example, here we are using<br>
+the <a href="http://diversicon-kb.eu/dataset/diversicon-wordnet-31/resource/h2db" target="_blank"> h2 database Wordnet 3.1 </a> downloaded from Diversicon website:</p>
+<img src="img/squirrel-sql-h2-connect-1.png" width="500px">
+<p>Then you are ready to connect:</p>
+<img src="img/squirrel-sql-h2-connect-2.png" width="500px">
+</div>
+            </div>
+
+        </div>        
+        <script src="../js/jquery-1.11.2.min.js"></script>
+        <!-- <script src="../js/bootstrap-3.3.4.min.js"></script> -->
+
+        <!-- quick and silly hack to get the file -->
+        <script src="website-template/js/jquery-1.11.2.min.js"></script>
+        <!-- quick and silly hack to get the file -->
+        <script src="website-template/js/jquery-3.3.4.min.js"></script>
+        <script>
+            // idotic CSS in style doesn't work, so use jquery instead: 
+            // also would like pre code but this will select code and won't work. There aren't selectors for parents
+
+            $("pre").css("max-width", "680px").css("overflow-x", "auto");
+
+            /* We don't support this yet...
+             $('.josman-tree-toggle').click(function () {
+             $(this).parent().children('ul.tree').toggle(200);
+             return false;
+             });
+             */
+        </script>
+    </body>
+</html>

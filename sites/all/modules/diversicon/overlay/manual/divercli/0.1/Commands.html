@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DiverCLI</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link id="josman-stylesheet" rel="stylesheet" type="text/css" href="../css/josman.css">
+        <!-- <link id="bootstrap-stylesheet" rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+        <link id="bootstrap-theme-stylesheet" rel="stylesheet" type="text/css" href="../css/bootstrap-theme.min.css">
+        -->
+        <link rel="stylesheet" type="text/css" href="website-template/css/josman.css"> 
+        <!--
+        <link  rel="stylesheet" type="text/css" href="website-template/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="website-template/css/bootstrap-theme.min.css">
+        -->
+    </head>
+    <body>
+        <div id="josman-wrapper">
+            <div id="josman-header">
+
+                <div style="position:absolute;  min-height:100px; min-width:100%; ">
+                    <a id="josman-program-logo-link" href="../index.html">
+                        <img id="josman-program-logo" src="../img/divercli-200px.png" alt="program logo">    
+                    </a>
+
+                    <a id="josman-repo-link" href="../index.html">DiverCLI</a>
+					
+					<div id="josman-dev-warning">WARNING: THIS DOCUMENTATION IS <br>ABOUT  UNRELEASED SOFTWARE <br>THAT CAN CHANGE ANYTIME</div>
+					
+                    <a id="josman-org-logo-link" href="http://kidf.eu" target="_blank" title="KiD Foundation">
+                        <img id="josman-org-logo" src="../img/org-200px.png" alt="organization logo">                        
+                    </a>
+					
+
+                    <div id="josman-nav-header">
+                        <a id="josman-home" href="../index.html">Home</a>                        
+                        <span id="josman-usage" style="margin-left:15px">Usage:                        
+                            
+                            
+                        <a class="josman-version-tab-header josman-tag-selected" href="../0.1/index.html">0.1</a></span>
+                        <span style="margin-left:35px">
+                            <a id="josman-project" class="josman-external-link" href="https://github.com/diversicon-kb/divercli" target="_blank">Github</a>
+                            <a id="josman-wiki" class="josman-external-link" href="https://github.com/diversicon-kb/divercli/wiki" target="_blank">Wiki</a> 
+                        </span>
+                    </div>
+                </div>                
+
+            </div>
+
+            <div id="josman-sidebar">
+                <div id="josman-internal-sidebar" class="josman-sidebar-block"><ul class="josman-tree"><li><div class="josman-sidebar-page-title"><a href="index.html">Usage</a></div><ul class="josman-tree"></ul></li><li><div class="josman-sidebar-page-title josman-sidebar-selected">Commands</div><ul class="josman-tree"><div><a href="#creating-databases">Creating databases</a></div><div><a href="#xml-import">XML import</a></div><div><a href="#invalid-imports">Invalid imports</a></div><div><a href="#unsatisfied-references">Unsatisfied references</a></div><div><a href="#force-imports">Force imports</a></div><div><a href="#import-many-resources">Import many resources</a></div><div><a href="#validating-xml">Validating XML</a></div><div><a href="#export">Export</a></div><div><a href="#stored-logs">Stored logs</a></div><div><a href="#commands-list">Commands list</a></div></ul></li><li><div class="josman-sidebar-page-title"><a href="Tools.html">Tools</a></div><ul class="josman-tree"></ul></li><li><div class="josman-sidebar-page-title"><a href="Developers.html">Developers</a></div><ul class="josman-tree"></ul></li><li><div class="josman-sidebar-page-title"><a href="Configuration.html">Configuration</a></div><ul class="josman-tree"></ul></li><li><div class="josman-sidebar-page-title"><a href="CHANGES.html">Release notes</a></div><ul class="josman-tree"></ul></li></ul></div>
+
+
+
+                <div id="josman-sidebar-managed-block" class="josman-sidebar-block">
+
+                    <div id="josman-javadoc-link" class="josman-sidebar-page-title"><a class="josman-external-link" href="javadoc/index.html" target="_blank">Javadoc</a></div>
+                    <!-- <div><a href="CHANGES.html">Release notes</a></div> -->              
+                </div>
+
+
+            </div>
+
+            <div id="josman-content">
+                <div id="josman-internal-content"><h3><a href="#creating-databases" id="creating-databases">Creating databases</a></h3>
+<p>Currently you can create H2 databases which can be empty or already containing Wordnet 3.1. Let's see how to do it.</p>
+<h4><a href="#creating-empty-database" id="creating-empty-database">Creating empty database</a></h4>
+<p>You can create an empty database in directory <code>myprj</code> by issuing</p>
+<p><code>divercli --prj myprj init</code>.</p>
+<p>Note however that the system will always preload in the db the <code>DivUpper</code> lexical resource:</p>
+<pre><code class="language-bash">&gt; divercli --prj myprj init
+
+Recreating tables in database  jdbc:h2:file:myprj/myprj ...
+
+</code></pre>
+<pre><code class="language-bash">&gt; cd myprj
+&gt; dir
+
+divercli.ini  myprj.h2.db  myprj.lock.db  myprj.trace.db
+
+</code></pre>
+<pre><code class="language-bash">&gt; divercli log
+
+Connecting to database   jdbc:h2:file:myprj
+Connected!
+
+Schema version: 1.0   Data version: -
+
+Name        : div-upper
+Prefix      : div
+Import id   : 2
+Namespace   : https://github.com/diversicon-kb/diversicon-model/blob/master/src/main/resources/div-upper.xml
+From file   : classpath:/div-upper.xml
+Imported by : Diversicon
+Started     : 2017-03-06 08:57:46
+Ended       : 2017-03-06 08:57:47
+Duration    : 0 secs
+
+
+
+Disconnected.
+
+</code></pre>
+<h4><a href="#creating-wordnet-31-database" id="creating-wordnet-31-database">Creating Wordnet 3.1 database</a></h4>
+<p>Wordnet 3.1 is packaged within DiverCli, in the format of a <a href="http://www.h2database.com" target="_blank">H2 database</a>. You can also <a href="http://diversicon-kb.eu/dataset/diversicon-wordnet-31">find it</a> in LMF XML and SQL dump formats. You can unpack the database where you like (i.e. <code>wn31/</code> directory) by issuing:</p>
+<pre><code class="language-bash">&gt; divercli --prj wn31 init --db classpath:/div-wn31.h2.db.xz
+
+Restoring database:   classpath:/div-wn31.h2.db.xz
+                to:   wn31/wn31.h2.db  ...
+Database created in 15 secs
+
+</code></pre>
+<pre><code>&gt; cd wn31
+&gt; dir
+
+divercli.ini  wn31.h2.db
+ 
+</code></pre>
+<h3><a href="#xml-import" id="xml-import">XML import</a></h3>
+<p>You can import one or more XMLs with the <code>import-xml</code> command.</p>
+<p>For example, here we first create a database with Wordnet inside, and then import the resource <code>smartphones.xml</code> which depends upon Wordnet. Process takes some time as database is normalized and transitive closure is computed (<a href="http://diversicon-kb.eu/manual/diversicon-core/index.html#xml-import">more info</a>):</p>
+<pre><code class="language-bash">&gt; divercli --prj wn31 init --db classpath:/div-wn31.h2.db.xz
+
+Restoring database:   classpath:/div-wn31.h2.db.xz
+                to:   wn31/wn31.h2.db  ...
+Database created in 15 secs
+
+</code></pre>
+<pre><code class="language-bash">&gt; cd wn31
+</code></pre>
+<pre><code class="language-bash">&gt; divercli import-xml --author "John Doe" --description "Some test import" classpath:/smartphones.xml
+
+Connecting to database   jdbc:h2:file:wn31
+Connected!
+Going to import 1 files by import author John Doe...
+Loading LMF : classpath:/smartphones.xml ...
+
+Validating XML Schema of /tmp/extracted3057853183437278765/smartphones.xml   ...
+
+XML is valid!
+
+Checking XML external references against the database ...
+
+Validating import data against the db....
+XML can be merged!
+
+
+Starting import...
+
+Done loading LMF : classpath:/smartphones.xml .
+
+Executing post-import db validation ... 
+
+DB is valid!
+
+   Elapsed time: 2 secs
+
+Normalizing SynsetRelations...
+
+Found 117796 synsets.
+
+SynsetRelation normalization - processed synsets: 10,000
+SynsetRelation normalization - processed synsets: 20,000
+SynsetRelation normalization - processed synsets: 30,000
+SynsetRelation normalization - processed synsets: 40,000
+SynsetRelation normalization - processed synsets: 50,000
+SynsetRelation normalization - processed synsets: 60,000
+SynsetRelation normalization - processed synsets: 70,000
+SynsetRelation normalization - processed synsets: 80,000
+SynsetRelation normalization - processed synsets: 100,000
+
+Done normalizing SynsetRelations.
+
+   No edges were added to the 993,234 existing ones. 
+
+   Elapsed time: 1 min, 36 secs
+
+Computing transitive closure for SynsetRelations (may take some minutes) ...
+
+   Found 993,234 synset relations.
+
+
+   Elapsed time: 2 mins, 10 secs
+
+
+Going to write closure into the db...
+
+
+Done writing transitive closure for SynsetRelations.
+
+   Max level:      13
+   Initial edges:  993,234
+   Inserted edges: 60
+        hypernym:   60
+
+   Elapsed time:  0 secs
+
+Elapsed time for import: 3 mins, 49 secs   Started: 2017-03-06 08:53:48   Ended: 2017-03-06 08:57:38
+
+
+
+Done importing 1 LMF by import author John Doe
+
+Imported lexical resources: 
+
+    div-smartphones    from    classpath:/smartphones.xml
+
+Disconnected.
+
+</code></pre>
+<h3><a href="#invalid-imports" id="invalid-imports">Invalid imports</a></h3>
+<p>When you try to import an XML, it is first validated to check XML is valid <em>and</em> references to<br>
+current db are present. Let's try to import <code>bad-examplicon.xml</code>, which we already know<br>
+contains many schema errors:</p>
+<pre><code class="language-bash">&gt; divercli --prj myprj init
+
+Recreating tables in database  jdbc:h2:file:myprj/myprj ...
+
+</code></pre>
+<pre><code class="language-bash">&gt; cd myprj
+</code></pre>
+<pre><code class="language-bash">&gt; divercli import-xml --author "John Doe" --description "Some test import" classpath:/bad-examplicon.xml
+
+Connecting to database   jdbc:h2:file:myprj
+Connected!
+Going to import 1 files by import author John Doe...
+Loading LMF : classpath:/bad-examplicon.xml ...
+
+Validating XML Schema of /tmp/extracted3532001274406869892/bad-examplicon.xml   ...
+
+29,43: cvc-datatype-valid.1.2.1: '666_lex-eng' is not a valid value for 'NCName'.
+29,43: cvc-attribute.3: The value '666_lex-eng' of attribute 'id' on element 'Lexicon' is not valid with respect to its type, 'ID'.
+33,34: cvc-complex-type.4: Attribute 'id' must appear on element 'LexicalEntry'.
+39,32: cvc-datatype-valid.1.2.1: '-trial' is not a valid value for 'NCName'.
+39,32: cvc-attribute.3: The value '-trial' of attribute 'id' on element 'Lemma' is not valid with respect to its type, 'ID'.
+45,46: cvc-datatype-valid.1.2.1: 'bex_s-????lectric-car' is not a valid value for 'NCName'.
+45,46: cvc-attribute.3: The value 'bex_s-????lectric-car' of attribute 'id' on element 'Sense' is not valid with respect to its type, 'ID'.
+16,48: DIV-10: Couldn't find LexicalResource prefix 'bex' among namespace prefixes! 
+29,43: DIV-0: Found Lexicon id 666_lex-eng not starting with LexicalResource prefix 'bex'
+39,32: DIV-0: Found Lemma id -trial not starting with LexicalResource prefix 'bex'
+45,46: DIV-4: Sense.synset bex_ss-electric-car : Found undeclared prefix in id!
+58,43: DIV-4: Sense.synset bex_ss-tesla-car : Found undeclared prefix in id!
+77,37: DIV-3: SynsetRelation.target 666_ss-n2961779 : Invalid prefix !
+91,37: DIV-4: SynsetRelation.target bex_ss-electric-car : Found undeclared prefix in id!
+
+Invalid xml! Found 14 errors in file:/tmp/extracted3532001274406869892/bad-examplicon.xml
+
+Import failed, no LexicalResource data was written to disk. Aborting all imports.
+
+Disconnected.
+
+</code></pre>
+<p>Predictably, the import failed.</p>
+<h3><a href="#unsatisfied-references" id="unsatisfied-references">Unsatisfied references</a></h3>
+<p>Even if you try to import the well-formed resource <code>smartphones.xml</code> into an empty db the process will fail, because smartphones is referencing the resource <code>Diversicon Wordnet 3.1</code> and the validator won't find it in the database. In this case, the best solution would be to first import Wordnet (If you really want to import resources that reference unmet dependencies, you can use the <code>--force</code> flag,  see next paragraph)</p>
+<pre><code class="language-bash">&gt; divercli --prj myprj init
+
+Recreating tables in database  jdbc:h2:file:myprj/myprj ...
+
+</code></pre>
+<pre><code class="language-bash">&gt; cd myprj
+</code></pre>
+<pre><code class="language-bash">&gt; divercli import-xml --author "John Doe" --description "Some test import" classpath:/smartphones.xml
+
+Connecting to database   jdbc:h2:file:myprj
+Connected!
+Going to import 1 files by import author John Doe...
+Loading LMF : classpath:/smartphones.xml ...
+
+Validating XML Schema of /tmp/extracted4755085107341326601/smartphones.xml   ...
+
+XML is valid!
+
+Checking XML external references against the database ...
+
+Validating import data against the db....
+125,37: DIV-2: SynsetRelation.target wn31_ss_n2995984 : Db does not contain referenced synset!
+156,37: DIV-2: SynsetRelation.target wn31_ss_n3086983 : Db does not contain referenced synset!
+
+There were warnings during strict validation:
+Found 2 warnings in file:/tmp/extracted4755085107341326601/smartphones.xml
+
+Import failed, no LexicalResource data was written to disk. Aborting all imports.
+
+Disconnected.
+
+</code></pre>
+<h3><a href="#force-imports" id="force-imports">Force imports</a></h3>
+<p>If you really want to import resources that reference unmet dependencies, you can use the<br>
+<code>--force</code><br>
+flag, like we are doing for <code>smartphones.xml</code> here:</p>
+<pre><code class="language-bash">&gt; divercli --prj myprj init
+
+Recreating tables in database  jdbc:h2:file:myprj/myprj ...
+
+</code></pre>
+<pre><code class="language-bash">&gt; cd myprj
+</code></pre>
+<pre><code class="language-bash">&gt; divercli import-xml --force --author "John Doe" --description "Some test import" classpath:/smartphones.xml
+
+Connecting to database   jdbc:h2:file:myprj
+Connected!
+Going to import 1 files by import author John Doe...
+Loading LMF : classpath:/smartphones.xml ...
+
+Validating XML Schema of /tmp/extracted7993654303317037134/smartphones.xml   ...
+
+XML is valid!
+
+Checking XML external references against the database ...
+
+Validating import data against the db....
+125,37: DIV-2: SynsetRelation.target wn31_ss_n2995984 : Db does not contain referenced synset!
+156,37: DIV-2: SynsetRelation.target wn31_ss_n3086983 : Db does not contain referenced synset!
+
+Found 2 warnings in file:/tmp/extracted7993654303317037134/smartphones.xml
+Ignoring warnings because of force flag.
+
+XML can be merged!
+
+
+Starting import...
+
+Done loading LMF : classpath:/smartphones.xml .
+
+Executing post-import db validation ... 
+
+DB is valid!
+
+   Elapsed time: 0 secs
+
+Normalizing SynsetRelations...
+
+Found 5 synsets.
+
+
+Done normalizing SynsetRelations.
+
+   No edges were added to the 5 existing ones. 
+
+   Elapsed time: 0 secs
+
+Computing transitive closure for SynsetRelations (may take some minutes) ...
+
+   Found 5 synset relations.
+
+
+   Elapsed time: 0 secs
+
+
+Going to write closure into the db...
+
+
+Done writing transitive closure for SynsetRelations.
+
+   Max level:      3
+   Initial edges:  5
+   Inserted edges: 6
+        hypernym:   6
+
+   Elapsed time:  0 secs
+
+Elapsed time for import: 1 sec   Started: 2017-03-06 08:43:50   Ended: 2017-03-06 08:43:51
+
+
+
+Done importing 1 LMF by import author John Doe
+
+Imported lexical resources: 
+
+    div-smartphones    from    classpath:/smartphones.xml
+
+Disconnected.
+
+</code></pre>
+<h3><a href="#import-many-resources" id="import-many-resources">Import many resources</a></h3>
+<p>If you need to import many resources, to avoid transitive closure recomputation you can either:</p>
+<p>a) specify more than one xml with the <code>import-xml</code> command.<br>
+The transitive closure will be automatically computed only once at the end of the two imports:</p>
+<pre><code class="language-bash">&gt; divercli --prj wn31 init --db classpath:/div-wn31.h2.db.xz
+
+Restoring database:   classpath:/div-wn31.h2.db.xz
+               to:   wn31/wn31.h2.db  ...
+Database created in 15 secs
+
+</code></pre>
+<pre><code class="language-bash">&gt; cd wn31
+</code></pre>
+<pre><code class="language-bash">&gt; divercli import-xml --author "John Doe" --description "Some test import" classpath:/smartphones.xml classpath:/examplicon.xml
+
+Connecting to database   jdbc:h2:file:wn31
+Connected!
+Going to import 2 files by import author John Doe...
+Loading LMF : classpath:/smartphones.xml ...
+
+Validating XML Schema of /tmp/extracted42581422160542426/smartphones.xml   ...
+
+XML is valid!
+
+Checking XML external references against the database ...
+
+Validating import data against the db....
+XML can be merged!
+
+
+Starting import...
+
+Done loading LMF : classpath:/smartphones.xml .
+Loading LMF : classpath:/examplicon.xml ...
+
+Validating XML Schema of /tmp/extracted1822986944096662523/examplicon.xml   ...
+
+XML is valid!
+
+Checking XML external references against the database ...
+
+Validating import data against the db....
+XML can be merged!
+
+
+Starting import...
+
+Done loading LMF : classpath:/examplicon.xml .
+
+Executing post-import db validation ... 
+
+DB is valid!
+
+   Elapsed time: 2 secs
+
+Normalizing SynsetRelations...
+
+Found 117800 synsets.
+
+SynsetRelation normalization - processed synsets: 10,000
+SynsetRelation normalization - processed synsets: 20,000
+SynsetRelation normalization - processed synsets: 30,000
+SynsetRelation normalization - processed synsets: 40,000
+SynsetRelation normalization - processed synsets: 50,000
+SynsetRelation normalization - processed synsets: 60,000
+SynsetRelation normalization - processed synsets: 70,000
+SynsetRelation normalization - processed synsets: 80,000
+SynsetRelation normalization - processed synsets: 100,000
+
+Done normalizing SynsetRelations.
+
+   No edges were added to the 993,239 existing ones. 
+
+   Elapsed time: 1 min, 38 secs
+
+Computing transitive closure for SynsetRelations (may take some minutes) ...
+
+   Found 993,239 synset relations.
+
+
+   Elapsed time: 2 mins, 19 secs
+
+
+Going to write closure into the db...
+
+
+Done writing transitive closure for SynsetRelations.
+
+   Max level:      13
+   Initial edges:  993,239
+   Inserted edges: 61
+        hypernym:   61
+
+   Elapsed time:  1 sec
+
+Elapsed time for import: 4 mins, 2 secs   Started: 2017-03-06 08:48:45   Ended: 2017-03-06 08:52:48
+
+
+
+Done importing 2 LMFs by import author John Doe
+
+Imported lexical resources: 
+
+    div-smartphones    from    classpath:/smartphones.xml
+    div-examplicon    from    classpath:/examplicon.xml
+
+Disconnected.
+
+</code></pre>
+<p>b) equivalently, you can set the flag <code>--skip-augment</code> and execute the command <code>import-xml</code>  on each xml you want to import. After the imports, you will explicitly have to compute the transitive closure by calling the command <code>db-augment</code>:</p>
+<p>For example, here we first initialize a project with Wordnet 3.1:</p>
+<pre><code class="language-bash">&gt; divercli --prj wn31 init --db classpath:/div-wn31.h2.db.xz
+
+Restoring database:   classpath:/div-wn31.h2.db.xz
+                to:   wn31/wn31.h2.db  ...
+Database created in 15 secs
+
+</code></pre>
+<pre><code class="language-bash">&gt; cd wn31
+</code></pre>
+<p>Afterwards, we import <code>smartphones.xml</code> resource with <code>--skip-augment</code> option:</p>
+<pre><code class="language-bash">&gt; divercli import-xml --skip-augment --author "John Doe" --description "Some test import" classpath:/smartphones.xml
+
+Connecting to database   jdbc:h2:file:wn31
+Connected!
+Going to import 1 files by import author John Doe...
+Loading LMF : classpath:/smartphones.xml ...
+
+Validating XML Schema of /tmp/extracted5583348067149447648/smartphones.xml   ...
+
+XML is valid!
+
+Checking XML external references against the database ...
+
+Validating import data against the db....
+XML can be merged!
+
+
+Starting import...
+
+Done loading LMF : classpath:/smartphones.xml .
+Skipping graph augmentation as requested by user.
+Elapsed time for import: 0 secs   Started: 2017-03-06 08:44:19   Ended: 2017-03-06 08:44:20
+
+
+
+Done importing 1 LMF by import author John Doe
+
+Imported lexical resources: 
+
+    div-smartphones    from    classpath:/smartphones.xml
+
+Disconnected.
+
+</code></pre>
+<p>Then we import <code>examplicon.xml</code>, again with <code>--skip-augment</code> option:</p>
+<pre><code class="language-bash">&gt; divercli import-xml --skip-augment --author "John Doe" --description "Some test import" classpath:/examplicon.xml
+
+Connecting to database   jdbc:h2:file:wn31
+Connected!
+Going to import 1 files by import author John Doe...
+Loading LMF : classpath:/examplicon.xml ...
+
+Validating XML Schema of /tmp/extracted4229983392227567099/examplicon.xml   ...
+
+XML is valid!
+
+Checking XML external references against the database ...
+
+Validating import data against the db....
+XML can be merged!
+
+
+Starting import...
+
+Done loading LMF : classpath:/examplicon.xml .
+Skipping graph augmentation as requested by user.
+Elapsed time for import: 0 secs   Started: 2017-03-06 08:44:21   Ended: 2017-03-06 08:44:22
+
+
+
+Done importing 1 LMF by import author John Doe
+
+Imported lexical resources: 
+
+    div-examplicon    from    classpath:/examplicon.xml
+
+Disconnected.
+
+</code></pre>
+<p>Finally, we augment the database:</p>
+<pre><code class="language-bash">&gt; divercli db-augment
+
+Connecting to database   jdbc:h2:file:wn31
+Connected!
+
+Executing post-import db validation ... 
+
+DB is valid!
+
+   Elapsed time: 3 secs
+
+Normalizing SynsetRelations...
+
+Found 117800 synsets.
+
+SynsetRelation normalization - processed synsets: 10,000
+SynsetRelation normalization - processed synsets: 20,000
+SynsetRelation normalization - processed synsets: 30,000
+SynsetRelation normalization - processed synsets: 40,000
+SynsetRelation normalization - processed synsets: 50,000
+SynsetRelation normalization - processed synsets: 60,000
+SynsetRelation normalization - processed synsets: 70,000
+SynsetRelation normalization - processed synsets: 80,000
+SynsetRelation normalization - processed synsets: 90,000
+SynsetRelation normalization - processed synsets: 110,000
+
+Done normalizing SynsetRelations.
+
+   No edges were added to the 993,239 existing ones. 
+
+   Elapsed time: 1 min, 41 secs
+
+Computing transitive closure for SynsetRelations (may take some minutes) ...
+
+   Found 993,239 synset relations.
+
+
+   Elapsed time: 2 mins, 15 secs
+
+
+Going to write closure into the db...
+
+
+Done writing transitive closure for SynsetRelations.
+
+   Max level:      13
+   Initial edges:  993,239
+   Inserted edges: 61
+        hypernym:   61
+
+   Elapsed time:  0 secs
+
+
+Disconnected.
+
+</code></pre>
+<h3><a href="#validating-xml" id="validating-xml">Validating XML</a></h3>
+<p>You can just validate an XML without checking it is consistent with current project db:</p>
+<pre><code class="language-bash">&gt; divercli validate-xml classpath:/smartphones.xml
+
+
+
+XML is valid!
+
+
+</code></pre>
+<p>As an example of failed validation, we can try to validate file <code>bad-examplicon.xml</code>. As the filename implies, validator is not going to be happy:</p>
+<pre><code class="language-bash">&gt; divercli validate-xml classpath:/bad-examplicon.xml
+
+29,43: cvc-datatype-valid.1.2.1: '666_lex-eng' is not a valid value for 'NCName'.
+29,43: cvc-attribute.3: The value '666_lex-eng' of attribute 'id' on element 'Lexicon' is not valid with respect to its type, 'ID'.
+33,34: cvc-complex-type.4: Attribute 'id' must appear on element 'LexicalEntry'.
+39,32: cvc-datatype-valid.1.2.1: '-trial' is not a valid value for 'NCName'.
+39,32: cvc-attribute.3: The value '-trial' of attribute 'id' on element 'Lemma' is not valid with respect to its type, 'ID'.
+45,46: cvc-datatype-valid.1.2.1: 'bex_s-????lectric-car' is not a valid value for 'NCName'.
+45,46: cvc-attribute.3: The value 'bex_s-????lectric-car' of attribute 'id' on element 'Sense' is not valid with respect to its type, 'ID'.
+16,48: DIV-10: Couldn't find LexicalResource prefix 'bex' among namespace prefixes! 
+29,43: DIV-0: Found Lexicon id 666_lex-eng not starting with LexicalResource prefix 'bex'
+39,32: DIV-0: Found Lemma id -trial not starting with LexicalResource prefix 'bex'
+
+Invalid xml! Found 14 errors in file:/tmp/extracted7421621815886165726/bad-examplicon.xml
+
+</code></pre>
+<h3><a href="#export" id="export">Export</a></h3>
+<p>You can export a lexical resource by issuing the command <code>export-xml</code>. For example, we are going to export the default lexical resource <code>DivUpper</code> which is always present in databases you create.</p>
+<p>First we create an empty project:</p>
+<pre><code class="language-bash">&gt; divercli --prj myprj init
+
+Recreating tables in database  jdbc:h2:file:myprj/myprj ...
+
+</code></pre>
+<pre><code class="language-bash">&gt; cd myprj
+</code></pre>
+<p>Then we can export the implicitly created <code>DivUpper</code> resource into <code>acme-upper-lexres.xml</code> file:</p>
+<pre><code class="language-bash">&gt; divercli export-xml --name div-upper acme-upper-lexres.xml
+
+Connecting to database   jdbc:h2:file:myprj
+Connected!
+Exporting xml to acme-upper-lexres.xml  ...
+Done exporting xml to acme-upper-lexres.xml  ...
+
+Disconnected.
+
+</code></pre>
+<h3><a href="#stored-logs" id="stored-logs">Stored logs</a></h3>
+<p>For each resource imported via DiverCli, an import log with relevant information is stored in the database. For example, here we show the log for Wordnet 3.1:</p>
+<pre><code class="language-bash">&gt; divercli --prj wn31 init --db classpath:/div-wn31.h2.db.xz
+
+Restoring database:   classpath:/div-wn31.h2.db.xz
+                to:   wn31/wn31.h2.db  ...
+Database created in 15 secs
+
+</code></pre>
+<pre><code class="language-bash">&gt; cd wn31
+</code></pre>
+<pre><code class="language-bash">&gt; divercli log
+
+Connecting to database   jdbc:h2:file:wn31
+Connected!
+
+Schema version: 1.0   Data version: -
+
+Name        : div-upper
+Prefix      : div
+Import id   : 2
+Namespace   : https://github.com/diversicon-kb/diversicon-model/blob/master/src/main/resources/div-upper.xml
+From file   : classpath:/div-upper.xml
+Imported by : Diversicon
+Started     : 2017-02-24 09:26:17
+Ended       : 2017-02-24 09:26:18
+Duration    : 1 sec
+
+Name        : div-wn31
+Prefix      : wn31
+Import id   : 3
+Namespace   : https://github.com/diversicon-kb/diversicon-wordnet-3.1
+From file   : /home/david.leoni/Da/prj/divmaker/dumps/diversicon/div-wn31.xml
+Imported by : David Leoni
+Started     : 2017-02-24 09:26:39
+Ended       : 2017-02-24 09:35:01
+Duration    : 8 mins, 21 secs
+Import for making Wordnet 3.1 Diversicon distribution
+
+
+
+Disconnected.
+
+</code></pre>
+<p>Note each import has a numerical identifier. To get more details about a single import (like warnings occurred during the import), you can use this command:</p>
+<pre><code class="language-bash">&gt; divercli import-show 3
+
+Connecting to database   jdbc:h2:file:wn31
+Connected!
+
+
+Name        : div-wn31
+Prefix      : wn31
+Import id   : 3
+Namespace   : https://github.com/diversicon-kb/diversicon-wordnet-3.1
+From file   : /home/david.leoni/Da/prj/divmaker/dumps/diversicon/div-wn31.xml
+Imported by : David Leoni
+Started     : 2017-02-24 09:26:39
+Ended       : 2017-02-24 09:35:01
+Duration    : 8 mins, 21 secs
+Import for making Wordnet 3.1 Diversicon distribution
+
+  No warn/error log messages were produced during the import.
+
+
+Disconnected.
+
+</code></pre>
+<p>Further logs can be found in files with extension <code>.log</code> available in the directory where you run <code>divercli</code></p>
+<h3><a href="#commands-list" id="commands-list">Commands list</a></h3>
+<p>You can see all options and commands by just calling <code>divercli</code> without parameters:</p>
+<pre><code class="language-bash">&gt; divercli 
+
+Usage: &lt;main class&gt; [options] [command] [command options]
+  Options:
+    --help
+       
+       Default: false
+    --http-proxy
+       http proxy
+    --prj
+       Path to the project directory. Defaults to current directory.
+    --reset-global-config
+       Resets the configuration in USER_DIR/.config/divercli/
+       Default: false
+    --timeout
+       timeout in milliseconds
+       Default: 15000
+  Commands:
+    export-xml      Export a lexical resource to an XML file in UBY-LMF format.
+      Usage: export-xml [options] Filepath of the xml to generate.
+        Options:
+          --compress
+             Compress the file into a zip archive
+             Default: false
+        * --name
+             The name of the lexical resource to export. Should be worldwide
+             unique and prefixed by your namespace (i.e. 'div-smartphones').
+
+    export-sql      Export the database into a sql dump
+      Usage: export-sql [options] The filepath where to save the generated sql dump
+        Options:
+          --compress
+             Compress the file into a zip archive
+             Default: false
+
+    init      Sets up current folder with a new database project.
+      Usage: init [options]
+        Options:
+          --db
+             Initialize the project from a .h2.db dump, which can be compressed
+             and expressed as a URL. For Wordnet 3.1 packaged dump, you can use
+             classpath:/div-wn31.h2.db.xz
+          --sql
+             Initalize the project with a h2 database from a sql dump, which can
+             be compressed and expressed as a URL
+
+    db-reset      Reset current database. If it doesn't exist it is created empty.
+      Usage: db-reset [options]
+
+    log      Show imports done so far.
+      Usage: log [options]
+
+    import-show      Display detailed import log of given import id.
+      Usage: import-show [options] the import id to show
+
+    import-xml      Import into the db lexical resources in UBY-LMF XML format. Resources can be compressed and expressed as urls like classpath:/smartphones.xml
+      Usage: import-xml [options] a space separated list of XML files in UBY-LMF format. Lexical resources must have a 'name' attribute. If there are already present resources with the same name, content will be merged.
+        Options:
+        * --author, -a
+             The author of the operations on the db.
+        * --description, -d
+             The description of the operation being performed on the db.
+          --dry-run, -r
+             A dry run simulates the import without writing anything into the
+             database.
+             Default: false
+          --force, -f
+             Forces import even on warnings (in particular, missing external
+             references).
+             Default: false
+          --skip-augment, -s
+             Skips augmenting the db graph to speed up  operations requiring the
+             transitive closure.
+             Default: false
+
+    db-augment      Augment the db graph to speed up  operations requiring the transitive closure.
+      Usage: db-augment [options]
+
+    help      Print help about a given command
+      Usage: help [options] Prints help about a given command.
+
+    validate-xml      Validates the provided xml file (doesn't require a project to run)
+      Usage: validate-xml [options] The filepath of the xml to validate
+        Options:
+          --fail-fast, -a
+             If enabled the validator will throw an error as soon log-limit
+             errors are reached (if log-limit is -1 the handler will throw on first
+             error).
+             Default: false
+          --log-limit, -l
+             The amount of logs which will be outputted. If -1 all log messages
+             will be emitted.
+             Default: 10
+          --schema, -c
+             The filepath to the Xml Schema used to validate the document. Will
+             override the schema pointed to in the document.
+          --strict, -s
+             If enabled, occurrance of warnings will make validation fail.
+             Default: false
+
+
+
+</code></pre>
+</div>
+            </div>
+
+        </div>        
+        <script src="../js/jquery-1.11.2.min.js"></script>
+        <!-- <script src="../js/bootstrap-3.3.4.min.js"></script> -->
+
+        <!-- quick and silly hack to get the file -->
+        <script src="website-template/js/jquery-1.11.2.min.js"></script>
+        <!-- quick and silly hack to get the file -->
+        <script src="website-template/js/jquery-3.3.4.min.js"></script>
+        <script>
+            // idotic CSS in style doesn't work, so use jquery instead: 
+            // also would like pre code but this will select code and won't work. There aren't selectors for parents
+
+            $("pre").css("max-width", "680px").css("overflow-x", "auto");
+
+            /* We don't support this yet...
+             $('.josman-tree-toggle').click(function () {
+             $(this).parent().children('ul.tree').toggle(200);
+             return false;
+             });
+             */
+        </script>
+    </body>
+</html>

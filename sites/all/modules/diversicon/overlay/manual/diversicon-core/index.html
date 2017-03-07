@@ -24,11 +24,13 @@
                     </a>
 
                     <a id="josman-repo-link" href="index.html">Diversicon Core</a>
-
-
-                    <a id="josman-org-logo-link" href="http://dati.trentino.it/en/" target="_blank" style="display:none;">
-                        <img id="josman-org-logo" style="float:right; padding:10px; width:80px" src="img/josman-org-200px.png" alt="organization logo">                        
+					
+					<div id="josman-dev-warning">WARNING: THIS DOCUMENTATION IS <br>ABOUT  UNRELEASED SOFTWARE <br>THAT CAN CHANGE ANYTIME</div>
+					
+                    <a id="josman-org-logo-link" href="http://kidf.eu" target="_blank" title="KiD Foundation">
+                        <img id="josman-org-logo" src="img/org-200px.png" alt="organization logo">                        
                     </a>
+					
 
                     <div id="josman-nav-header">
                         <a id="josman-home" href="index.html" class="josman-tag-selected">Home</a>                        
@@ -37,7 +39,7 @@
                             
                         <a class="josman-version-tab-header " href="0.1/index.html">0.1</a></span>
                         <span style="margin-left:35px">
-                            <a id="josman-project" class="josman-external-link" href="https://github.com/diversicon-kb/diversicon-core" target="_blank">Repo</a>
+                            <a id="josman-project" class="josman-external-link" href="https://github.com/diversicon-kb/diversicon-core" target="_blank">Github</a>
                             <a id="josman-wiki" class="josman-external-link" href="https://github.com/diversicon-kb/diversicon-core/wiki" target="_blank">Wiki</a> 
                         </span>
                     </div>
@@ -62,53 +64,56 @@
             <div id="josman-content">
                 <div id="josman-internal-content">
 
-<h4><a href="#about" name="about">About</a></h4>
-<p>Simple Java library to provide a multilingual SQL knowledge base for lexicons and concepts, based upon <a href="https://github.com/dkpro/dkpro-uby" target="_blank">UBY</a>. </p>
+<h4><a href="#about-core" id="about-core">About Core</a></h4>
+<p>Java library that provides a multilingual SQL knowledge base for lexicons and concepts, based upon <a href="https://github.com/dkpro/dkpro-uby" target="_blank">DKPRO UBY</a>. Part of <a href="http://diversicon-kb.eu/tools#java-libraries">Diversicon tools</a>.</p>
 <table>
-  <thead>
-    <tr>
-      <th><strong>Usage</strong></th>
-      <th><strong>License</strong></th>
-      <th><strong>Roadmap</strong></th>
-      <th><strong>Contributing</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>See <a href="0.1/index.html">docs</a> </td>
-      <td>Business-friendly <a href="LICENSE.txt">Apache License v2.0</a> </td>
-      <td>See <a href="https://github.com/diversicon-kb/diversicon-core/milestones">project milestones</a> </td>
-      <td>See <a href="https://github.com/diversicon-kb/diversicon-core/wiki">the wiki</a></td>
-    </tr>
-  </tbody>
+<thead>
+<tr><th><strong>Usage</strong></th><th><strong>License</strong></th><th><strong>Roadmap</strong></th><th><strong>Contributing</strong></th></tr>
+</thead>
+<tbody>
+<tr><td> See <a href="0.1/index.html">docs</a> </td><td>Business-friendly <a href="LICENSE.txt">Apache License v2.0</a> </td><td> See <a href="https://github.com/diversicon-kb/diversicon-core/milestones">project milestones</a> </td><td> See <a href="https://github.com/diversicon-kb/diversicon-core/wiki">the wiki</a></td></tr>
+</tbody>
 </table>
-<p><strong>Features:</strong></p>
+<p><strong>Features</strong></p>
 <ul>
-  <li>thin wrapper over <a href="https://github.com/dkpro/dkpro-uby" target="_blank">UBY</a>, adds:<br> - transitive closure computation for <code>SynsetRelations</code><br> - simplified API for compressed XML I/O (in LMF-UBY format) and SQL backup<br> - a testing framework to quickly create graphs via api<br> - more metadata about DB and imports<br> - improved logging<br> - Ships with <a href="https://github.com/diversicon-kb/diversicon-wordnet-3.1">Wordnet 3.1 dump</a></li>
-  <li>access to DB via Hibernate</li>
-  <li>for now fully supports <a href="http://www.h2database.com/html/main.html" target="_blank">H2 DB</a>, a pure Java database (both in-memory and on disk). No separate installation is required.</li>
-  <li>dependency handling with Maven</li>
-  <li>unit tested with proper integration tests</li>
-  <li>supports Java 7+</li>
+<li>Improves DKPRO UBY with <a href="0.1/CHANGES.html#0.1.0" target="_blank">stronger validation,  namespaces handling and I/O management</a></li>
+<li>access to DB via Hibernate</li>
+<li>based on <a href="http://www.h2database.com/html/main.html" target="_blank">H2 DB</a>, a pure Java database (both in-memory and on disk). No separate installation is required.</li>
+<li>dependency handling with Maven</li>
+<li>unit tested with proper integration tests</li>
+<li>supports Java 7+</li>
 </ul>
-<h4><a href="#dependencies" name="dependencies">Dependencies</a></h4>
+<h4><a href="#dependencies" id="dependencies">Dependencies</a></h4>
 <ul>
-  <li>DKPRO <a href="https://github.com/dkpro/dkpro-uby" target="_blank">UBY</a></li>
-  <li>Hibernate</li>
-  <li><a href="http://www.h2database.com/html/main.html" target="_blank">H2</a> database</li>
-  <li>Apache Commons IO and Compress, XZ Archiver</li>
-  <li>Diversicon Model <a href="https://github.com/diversicon-kb/diversicon-model" target="_blank">Diversicon Model</a></li>
+<li>DKPRO <a href="https://github.com/dkpro/dkpro-uby" target="_blank">UBY</a></li>
+<li>Hibernate</li>
+<li><a href="http://www.h2database.com/html/main.html" target="_blank">H2</a> database</li>
+<li>Apache Commons IO and Compress, XZ Archiver</li>
+<li><a href="https://github.com/diversicon-kb/diversicon-model" target="_blank">Diversicon Model</a></li>
 </ul>
-<h4><a href="#projects-using-diversicon" name="projects-using-diversicon">Projects using Diversicon</a></h4>
+<h4><a href="#projects-using-diversicon-core" id="projects-using-diversicon-core">Projects using Diversicon Core</a></h4>
 <ul>
-  <li><a href="https://github.com/diversicon-kb/divercli">DiverCLI</a>: a command line tool to manage Diversicons</li>
-  <li><a href="https://github.com/s-match/s-match-uby">S-Match UBY</a>: a connector for <a href="http://semanticmatching.org/s-match.html" target="_blank">S-match</a> semantic framework</li>
+<li><a href="https://github.com/diversicon-kb/divercli">DiverCLI</a>: a command line tool to manage Diversicons</li>
+<li><a href="https://github.com/diversicon-kb/divmaker">DivMaker</a>: XML LMF converter</li>
+<li><a href="https://github.com/s-match/s-match-uby">S-Match Diversicon</a>: a connector for <a href="http://semanticmatching.eu/s-match.html" target="_blank">S-match</a> semantic framework</li>
 </ul>
-<h4><a href="#credits" name="credits">Credits</a></h4>
+<h4><a href="#credits" id="credits">Credits</a></h4>
+<p>Design:</p>
 <ul>
-  <li>Programming: David Leoni - Heriot Watt University, Edinburgh - david.leoni at unitn.it</li>
-  <li>Architecture: Gabor Bella - DISI, University of Trento - gabor.bella at unitn.it</li>
-</ul></div>
+<li>Fiona McNeill - Heriot-Watt University, Edinburgh - f.mcneill at hw.ac.uk</li>
+<li>Gabor Bella - DISI, University of Trento -  gabor.bella at unitn.it</li>
+<li>David Leoni - Heriot Watt University, Edinburgh - david.leoni at unitn.it</li>
+</ul>
+<p>Programming:</p>
+<ul>
+<li>David Leoni - Heriot Watt University, Edinburgh - david.leoni at unitn.it</li>
+</ul>
+<p>Based on:</p>
+<p><a href="http://dkpro.github.io/dkpro-uby/" target="blank">DKPRO UBY framework</a>, by UKP Lab, Technische Universität Darmstadt.</p>
+<p>Made possible thanks to:</p>
+<p>   <a href="https://www.hw.ac.uk/schools/mathematical-computer-sciences/departments/computer-science.htm" target="_blank"> <img src="0.1/img/hw.webp" width="80px" style="vertical-align:middle;"> </a>    <a href="https://www.hw.ac.uk/schools/mathematical-computer-sciences/departments/computer-science.htm" target="_blank"> Heriot-Watt Computer Science Department </a></p>
+<p> <a href="http://kidf.eu" target="_blank"> <img style="vertical-align:middle;" width="140px" src="0.1/img/kidf-scientia.png"> </a>   <a href="http://kidf.eu" target="_blank"> Knowledge in Diversity Foundation </a> <br></p>
+</div>
             </div>
 
         </div>        

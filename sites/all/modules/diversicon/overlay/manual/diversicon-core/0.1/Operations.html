@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Diversicon Core</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link id="josman-stylesheet" rel="stylesheet" type="text/css" href="../css/josman.css">
+        <!-- <link id="bootstrap-stylesheet" rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+        <link id="bootstrap-theme-stylesheet" rel="stylesheet" type="text/css" href="../css/bootstrap-theme.min.css">
+        -->
+        <link rel="stylesheet" type="text/css" href="website-template/css/josman.css"> 
+        <!--
+        <link  rel="stylesheet" type="text/css" href="website-template/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="website-template/css/bootstrap-theme.min.css">
+        -->
+    </head>
+    <body>
+        <div id="josman-wrapper">
+            <div id="josman-header">
+
+                <div style="position:absolute;  min-height:100px; min-width:100%; ">
+                    <a id="josman-program-logo-link" href="../index.html">
+                        <img id="josman-program-logo" src="../img/diversicon-core-200px.png" alt="program logo">    
+                    </a>
+
+                    <a id="josman-repo-link" href="../index.html">Diversicon Core</a>
+					
+					<div id="josman-dev-warning">WARNING: THIS DOCUMENTATION IS <br>ABOUT  UNRELEASED SOFTWARE <br>THAT CAN CHANGE ANYTIME</div>
+					
+                    <a id="josman-org-logo-link" href="http://kidf.eu" target="_blank" title="KiD Foundation">
+                        <img id="josman-org-logo" src="../img/org-200px.png" alt="organization logo">                        
+                    </a>
+					
+
+                    <div id="josman-nav-header">
+                        <a id="josman-home" href="../index.html">Home</a>                        
+                        <span id="josman-usage" style="margin-left:15px">Usage:                        
+                            
+                            
+                        <a class="josman-version-tab-header josman-tag-selected" href="../0.1/index.html">0.1</a></span>
+                        <span style="margin-left:35px">
+                            <a id="josman-project" class="josman-external-link" href="https://github.com/diversicon-kb/diversicon-core" target="_blank">Github</a>
+                            <a id="josman-wiki" class="josman-external-link" href="https://github.com/diversicon-kb/diversicon-core/wiki" target="_blank">Wiki</a> 
+                        </span>
+                    </div>
+                </div>                
+
+            </div>
+
+            <div id="josman-sidebar">
+                <div id="josman-internal-sidebar" class="josman-sidebar-block"><ul class="josman-tree"><li><div class="josman-sidebar-page-title"><a href="index.html">Usage</a></div><ul class="josman-tree"></ul></li><li><div class="josman-sidebar-page-title josman-sidebar-selected">Operations</div><ul class="josman-tree"><div><a href="#introduction">Introduction</a></div><div><a href="#xml-validation">XML Validation</a></div><div><a href="#xml-import">XML Import</a></div><div><a href="#update">Update</a></div><div><a href="#delete">Delete</a></div></ul></li><li><div class="josman-sidebar-page-title"><a href="DiversiconLMF.html">Diversicon Lmf</a></div><ul class="josman-tree"></ul></li><li><div class="josman-sidebar-page-title"><a href="CHANGES.html">Release notes</a></div><ul class="josman-tree"></ul></li></ul></div>
+
+
+
+                <div id="josman-sidebar-managed-block" class="josman-sidebar-block">
+
+                    <div id="josman-javadoc-link" class="josman-sidebar-page-title"><a class="josman-external-link" href="javadoc/index.html" target="_blank">Javadoc</a></div>
+                    <!-- <div><a href="CHANGES.html">Release notes</a></div> -->              
+                </div>
+
+
+            </div>
+
+            <div id="josman-content">
+                <div id="josman-internal-content"><h3><a href="#introduction" id="introduction">Introduction</a></h3>
+<p>Diversicon supports <code>LexicalResource</code> reading, importing XMLs and some limited form of update. Delete is currently not supported. Operations rely on two principles:</p>
+<h4><a href="#principle-1-one-lexicalresource-per-xml" id="principle-1-one-lexicalresource-per-xml">Principle 1: One LexicalResource per XML</a></h4>
+<p>As per LMF specs, each XML file contains exactly one <code>LexicalResource</code>. This also simplifies file management and provenance.</p>
+<h4><a href="#principle-2-imported-lexicalresources-shouldnt-change" id="principle-2-imported-lexicalresources-shouldnt-change">Principle 2: Imported LexicalResources shouldn't change</a></h4>
+<p>A Diversicon database should always contain a faithful representation of the imported XMLs. To allow this, eventual changes to an imported <code>LexicalResource</code>  should be done in a controlled manner by Diversicon (i.e. ID renaming or adding edges for computing transitive closure). All edges automatically added by Diversicon during normalization and transitive closure computation are marked as having provenance <code>div</code>, and during export they are filtered out. This way at any time you should be able to export a <code>LexicalResource</code> to obtain something nearly identical to the original XML it came from. <br>NOTE: some difference with the original could be admitted for provenance purposes, like i.e. additional metadata documentating the passage into Diversicon.</p>
+<p>If you still try <a href="#updating-existing-synsets-manual-db-edit">direct update</a> of an already imported <code>LexicalResource</code> (i.e. by manually editing the db), then it becomes your responability to keep the database in a consistent state.</p>
+<h3><a href="#xml-validation" id="xml-validation">XML Validation</a></h3>
+<p>XML Validation is configured by  <a href="https://github.com/diversicon-kb/diversicon-core/blob/diversicon-core-0.1.0/src/main/java/eu/kidf/diversicon/core/XmlValidationConfig.java"><code>XmlValidationConfig</code></a> and done in two steps:</p>
+<ol>
+<li>validate according to XML Schema 1.0 <a href="http://diversicon-kb.eu/schema/1/diversicon.xsd">http://diversicon-kb.eu/schema/1/diversicon.xsd</a></li>
+<li>validate according to custom class <code>DivXmlValidator</code> in two substeps:
+<ol>
+<li>check XML structure and metadata are coherent</li>
+<li>check internal XML references are satisfied (i.e. <em>phablet</em> links to existing <em>smartphone</em> synset)</li>
+</ol>
+</li>
+</ol>
+<p>By default, plain XML validation is done in <em>non-strict</em> mode, that is, doesn't fail on warnings.</p>
+<h3><a href="#xml-import" id="xml-import">XML Import</a></h3>
+<p>Creation of <code>LexicalResource</code> should be done only through import functions of Diversicon, as this preserves database integrity and allows keeping properly track of metadata.</p>
+<p>XML import in Diversicon is a complex process divided into 6 steps. Notice first steps are similar to XML validation but with important differences:</p>
+<ol>
+<li>
+<p>validate according to XML Schema 1.0 <a href="http://diversicon-kb.eu/schema/1/diversicon.xsd">http://diversicon-kb.eu/schema/1/diversicon.xsd</a><br>
+<br>
+NOTE: during import XML is validated in <em>strict</em> mode, so it does fail on warnings.</p>
+</li>
+<li>
+<p>validate according to custom class <a href="https://github.com/diversicon-kb/diversicon-core/blob/diversicon-core-0.1.0/src/main/java/eu/kidf/diversicon/core/internal/DivXmlValidator.java"><code>DivXmlValidator</code></a> in three substeps:</p>
+<ol>
+<li>check XML structure and metadata are coherent</li>
+<li>check internal XML references are satisfied (i.e. <em>phablet</em> links to existing <em>smartphone</em> synset)</li>
+<li>check external references are satisfied and present in the db (i.e. links to Wordnet '<em>computer</em>' synset are already present in the db ). If external references are not satisfied (i.e. in the XML Wordnet is referenced but was not imported yet) <em>WARNINGs</em> are emitted.</li>
+</ol>
+</li>
+<li>
+<p>a new [<code>ImportJob</code>](../src/main/java/eu/kidf/diversicon/core/ImportJob.java  is created,<br>
+flags in <a href="https://github.com/diversicon-kb/diversicon-core/blob/diversicon-core-0.1.0/src/main/java/eu/kidf/diversicon/core/DbInfo.java"><code>DbInfo</code></a> class are reset, logging is redirected to db</p>
+</li>
+<li>lexical resource is written to the db</li>
+<li>resulting graph is validated to prevent problems with augmentations (i.e. it is checked for self-loops in hypernyms)</li>
+<li>graph is <a href="DiversiconLMF.html#normalized-lmf">normalized</a><br>
+5.1 <a href="DiversiconLMF.html#domains">Domains</a> are identified and linked to <code>div_ss_n_domain</code><br>
+5.2 <a href="DiversiconLMF.html#canonical-relations">Canonical relations</a> are materialized</li>
+<li>graph is augmented by calculating the transitive closure of canonical relations.</li>
+</ol>
+<p>Steps after 3 are optional and configurable with the <code>skipAugment</code> flag in <a href="https://github.com/diversicon-kb/diversicon-core/blob/diversicon-core-0.1.0/src/main/java/eu/kidf/diversicon/core/ImportConfig.java"><code>ImportConfig</code></a>, so you can import many files at once and delay the augmentation only at the end of all imports by calling <code>Diversicon.processGraph()</code></p>
+<p>If any <em>ERROR</em> is reported, import fails.<br>
+If any <em>WARNING</em> is reported, import fails</p>
+<p>Import fails an warnings because by default during import strict validation is used. To change this behaviour, see the following <code>force</code> flag.</p>
+<h4><a href="#flag" id="flag"><code>force</code> flag</a></h4>
+<p>If you try to import resources in the wrong order (i.e. resource <em>A</em> depends on <em>B</em>, and you import first <em>B</em>) or import resources with circular references (<em>A</em> depends on <em>B</em> and viceversa), import fails with validation warnings. To force the import in these cases, enable <code>force</code> flag in <a href="https://github.com/diversicon-kb/diversicon-core/blob/diversicon-core-0.1.0/src/main/java/eu/kidf/diversicon/core/ImportConfig.java"><code>ImportConfig</code></a>.</p>
+<h4><a href="#import-errors" id="import-errors">Import errors</a></h4>
+<p>After validation succeeds, actual import starts. If errors occur after writing to db has started, Diversicon will to try some strategy for rolling back: unfortunately at this time complete rollback is <strong>not</strong> always possible due to <a href="https://github.com/diversicon-kb/diversicon-core/issues/38">issue 38</a>.<br>
+To avoid surprises it can be a good idea to use the dry run flag in <a href="https://github.com/diversicon-kb/diversicon-core/blob/diversicon-core-0.1.0/src/main/java/eu/kidf/diversicon/core/ImportConfig.java"><code>ImportConfig</code></a>.</p>
+<h3><a href="#update" id="update">Update</a></h3>
+<p>There are different scenarios in which a user might want to update an existing <code>LexicalResource</code>. He may want to modify internal links, links to other resources, or just change fields such as synset descriptions. We now discuss in detail some relevant case for synsets.</p>
+<h4><a href="#appending-synsets-to-an-upper-ontology" id="appending-synsets-to-an-upper-ontology">Appending synsets to an upper ontology</a></h4>
+<p>Suppose you want to append synsets under existing ones in an upper ontology, without modifying the upper ontology itself. You can just create a new <code>LexicalResource</code> XML and link synsets of another XML by using <code>SynsetRelation</code> tags:</p>
+<img src="img/extension-2.png">
+<h4><a href="#inserting-middle-synsets" id="inserting-middle-synsets">Inserting middle synsets</a></h4>
+<p>Suppose you have an upper ontology with two <code>Synsets</code> linked by a <code>hypernym</code> relation, and you want to extend the relation by inserting a third node between the two:</p>
+<img src="img/extension-0.png">
+<p>Currently, to achieve this goal without manually modifying the original resource, you can create a new <code>LexicalResource</code> holding the middle synset linked with a <code>hypernym</code> (a <a href="(DiversiconLMF.html#canonical-relations)">canonical relation</a>) to the top node, and a <code>hyponym</code> (a non-canonical relation) to the bottom node. When importing the new <code>LexicalResource</code> Diversicon will automatically run a normalization procedure, which will create edges of canonical relations such as <code>hypernym</code>:</p>
+<img src="img/extension-1.png">
+<h4><a href="#updating-existing-synsets" id="updating-existing-synsets">Updating existing synsets</a></h4>
+<p>In some cases you might be forced to directly change the original <code>LexicalResource</code>. For example, you found a nice WordNet in your favourite language but quickly discovered some synsets have wrong relations and others don't have any description at all. So you want to fix relations and add missing descriptions: currently the best way to do this would be to create your own version of the <code>LexicalResource</code> and assign a different namespace to the resource. To do the changes, you could either do a manual DB edit  or edit the original XML:</p>
+<h5><a href="#updating-existing-synsets-manual-db-edit" id="updating-existing-synsets-manual-db-edit">Updating existing synsets: Manual DB edit</a></h5>
+<ol>
+<li>modify the original XML to assign a new namespace</li>
+<li>import the XML into Diversicon</li>
+<li>do other changes with some <a href="http://diversicon-eu.kb/manual/divercli/latest/Tools.html">Database browser</a></li>
+<li>manually run the function <code>processGraph</code> to validate, normalize, and compute the transitive closure of the graph.</li>
+</ol>
+<p>To keep track of changes, you could use some DB diff tool</p>
+<h5><a href="#updating-existing-synsets-edit-original-xml" id="updating-existing-synsets-edit-original-xml">Updating existing synsets: Edit original XML</a></h5>
+<ol>
+<li>modify the original XML to assign a new namespace and do other changes</li>
+<li>import the modified XML into Diversicon</li>
+</ol>
+<p>To keep track of changes, you could use some diff tool or even versioning with git (not ideal especially if the XML is huge, but could still work).</p>
+<h3><a href="#delete" id="delete">Delete</a></h3>
+<p>Currently, there is no special facility for deleting stuff. If you try to do it manually the DB might also complain that you are violating some constraint (for <code>SynsetRelation</code> you don't have constraints). Probably in many cases if you need to get rid of a <code>LexicalResource</code> you could just create an empty database and reimport all the XMLs.</p>
+</div>
+            </div>
+
+        </div>        
+        <script src="../js/jquery-1.11.2.min.js"></script>
+        <!-- <script src="../js/bootstrap-3.3.4.min.js"></script> -->
+
+        <!-- quick and silly hack to get the file -->
+        <script src="website-template/js/jquery-1.11.2.min.js"></script>
+        <!-- quick and silly hack to get the file -->
+        <script src="website-template/js/jquery-3.3.4.min.js"></script>
+        <script>
+            // idotic CSS in style doesn't work, so use jquery instead: 
+            // also would like pre code but this will select code and won't work. There aren't selectors for parents
+
+            $("pre").css("max-width", "680px").css("overflow-x", "auto");
+
+            /* We don't support this yet...
+             $('.josman-tree-toggle').click(function () {
+             $(this).parent().children('ul.tree').toggle(200);
+             return false;
+             });
+             */
+        </script>
+    </body>
+</html>

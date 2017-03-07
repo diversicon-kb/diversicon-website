@@ -177,8 +177,23 @@ table, th, td {
 
 #josman-program-logo {
     padding:10px; 
-    width:80px; 
-    height:80px                
+    max-width:100px; 
+    max-height:80px;                
+}
+
+#josman-org-logo {
+	float:right; 
+	padding:10px; 
+	max-width:130px;
+	max-height:80px;
+}
+
+#josman-dev-warning {
+    position: absolute;
+    top: 5px;
+    color: red;
+    right: 150px;
+    text-align: center;
 }
 
 .josman-image-link {
@@ -193,19 +208,29 @@ pre {
     background-color: #F7F9F2;
     padding: 6px;    
     border-style: solid;
-    border-width: 1px;    
-    
+    border-width: 1px;
+    white-space: pre-wrap;        
+}
+
+pre > code {
+	background-color: #F7F9F2 !important;
 }
 
 code {
-    background-color: #F7F9F2;
-    font-size : 15px; 
+    background-color: #fff0d2 !important;
+    font-size : 15px;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border-radius: 4px;
 }
  
-
+/*
 .josman-external-link:after {
     content: " " url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAVklEQVR4Xn3PgQkAMQhDUXfqTu7kTtkpd5RA8AInfArtQ2iRXFWT2QedAfttj2FsPIOE1eCOlEuoWWjgzYaB/IkeGOrxXhqB+uA9Bfcm0lAZuh+YIeAD+cAqSz4kCMUAAAAASUVORK5CYII=);
-}            
+} 
+*/           
 
 
 
@@ -219,7 +244,7 @@ code {
 
 a:link {           
     text-decoration: none !important;
-    color: #2a0fcd;
+    color: #2d44c1; 
 }
 
 a:visited {
