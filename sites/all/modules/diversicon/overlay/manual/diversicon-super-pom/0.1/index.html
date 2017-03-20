@@ -48,7 +48,7 @@
             </div>
 
             <div id="josman-sidebar">
-                <div id="josman-internal-sidebar" class="josman-sidebar-block"><ul class="josman-tree"><li><div class="josman-sidebar-page-title josman-sidebar-selected">Usage</div><ul class="josman-tree"><div><a href="#getting-started">Getting started</a></div><div><a href="#example-usage">Example Usage</a></div><div><a href="#logging">Logging</a></div></ul></li><li><div class="josman-sidebar-page-title"><a href="CHANGES.html">Release notes</a></div><ul class="josman-tree"></ul></li></ul></div>
+                <div id="josman-internal-sidebar" class="josman-sidebar-block"><ul class="josman-tree"><li><div class="josman-sidebar-page-title josman-sidebar-selected">Usage</div><ul class="josman-tree"><div><a href="#getting-started">Getting started</a></div></ul></li><li><div class="josman-sidebar-page-title"><a href="CHANGES.html">Release notes</a></div><ul class="josman-tree"></ul></li></ul></div>
 
 
 
@@ -71,20 +71,6 @@
         &lt;version&gt;0.1.0-SNAPSHOT&lt;/version&gt;
     &lt;/dependency&gt;
 </code></pre>
-<p>If you want to use Wordnet 3.1, you have to add this additional dependency:</p>
-<pre><code class="language-xml">	&lt;dependency&gt;
-		&lt;groupId&gt;eu.kidf&lt;/groupId&gt;
-		&lt;artifactId&gt;div-wn31-h2db&lt;/artifactId&gt;
-		&lt;version&gt;0.1.0-SNAPSHOT&lt;/version&gt;		
-	&lt;/dependency&gt;
-
-</code></pre>
-<h3><a href="#example-usage" id="example-usage">Example Usage</a></h3>
-<p>To create a database with Wordnet 3.1 and then import the example resource Smartphones, you can<br>
-look at the example <a href="../../src/test/java/eu/kidf/diversicon/core/test/TestApp1.java"><code>TestApp1</code></a></p>
-<p>For more usage examples, you can have a look at DiverCLI project, in particular the various <a href="https://github.com/diversicon-kb/divercli/tree/master/src/main/java/eu/kidf/diversicon/cli/commands">Commands</a></p>
-<h3><a href="#logging" id="logging">Logging</a></h3>
-<p>Diversicon uses <a href="http://www.slf4j.org" target="_blank">SLF4J </a> logging system. Library has only <code>slf4j-api</code> as dependency. For using logging during development / testing, see <a href="https://github.com/diversicon-kb/diversicon-super-pom/wiki/#logging">the wiki</a>.</p>
 </div>
             </div>
 

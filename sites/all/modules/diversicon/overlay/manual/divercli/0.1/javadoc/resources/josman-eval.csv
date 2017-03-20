@@ -42,8 +42,8 @@ Import id   : 2
 Namespace   : https://github.com/diversicon-kb/diversicon-model/blob/master/src/main/resources/div-upper.xml
 From file   : classpath:/div-upper.xml
 Imported by : Diversicon
-Started     : 2017-03-06 08:57:46
-Ended       : 2017-03-06 08:57:47
+Started     : 2017-03-20 02:07:11
+Ended       : 2017-03-20 02:07:11
 Duration    : 0 secs
 
 
@@ -112,8 +112,8 @@ Import id   : 4
 Namespace   : https://github.com/diversicon-kb/diversicon-model/blob/master/src/main/resources/smartphones.xml
 From file   : classpath:/smartphones.xml
 Imported by : John Doe
-Started     : 2017-03-06 08:53:48
-Ended       : 2017-03-06 08:53:48
+Started     : 2017-03-20 02:03:20
+Ended       : 2017-03-20 02:03:20
 Duration    : 0 secs
 Some test import
 
@@ -132,7 +132,7 @@ Connected!
 Going to import 1 files by import author John Doe...
 Loading LMF : classpath:/bad-examplicon.xml ...
 
-Validating XML Schema of /tmp/extracted3532001274406869892/bad-examplicon.xml   ...
+Validating XML Schema of /tmp/extracted4310816780899064880/bad-examplicon.xml   ...
 
 29,43: cvc-datatype-valid.1.2.1: '666_lex-eng' is not a valid value for 'NCName'.
 29,43: cvc-attribute.3: The value '666_lex-eng' of attribute 'id' on element 'Lexicon' is not valid with respect to its type, 'ID'.
@@ -149,7 +149,7 @@ Validating XML Schema of /tmp/extracted3532001274406869892/bad-examplicon.xml   
 77,37: DIV-3: SynsetRelation.target 666_ss-n2961779 : Invalid prefix !
 91,37: DIV-4: SynsetRelation.target bex_ss-electric-car : Found undeclared prefix in id!
 
-Invalid xml! Found 14 errors in file:/tmp/extracted3532001274406869892/bad-examplicon.xml
+Invalid xml! Found 14 errors in file:/tmp/extracted4310816780899064880/bad-examplicon.xml
 
 Import failed, no LexicalResource data was written to disk. Aborting all imports.
 
@@ -288,7 +288,7 @@ badexamplicon.validate,"```bash
 29,43: DIV-0: Found Lexicon id 666_lex-eng not starting with LexicalResource prefix 'bex'
 39,32: DIV-0: Found Lemma id -trial not starting with LexicalResource prefix 'bex'
 
-Invalid xml! Found 14 errors in file:/tmp/extracted7421621815886165726/bad-examplicon.xml
+Invalid xml! Found 14 errors in file:/tmp/extracted6164848261670200726/bad-examplicon.xml
 
 ```
 "
@@ -300,7 +300,7 @@ Connected!
 Going to import 1 files by import author John Doe...
 Loading LMF : classpath:/smartphones.xml ...
 
-Validating XML Schema of /tmp/extracted7993654303317037134/smartphones.xml   ...
+Validating XML Schema of /tmp/extracted117819823167262129/smartphones.xml   ...
 
 XML is valid!
 
@@ -310,7 +310,7 @@ Validating import data against the db....
 125,37: DIV-2: SynsetRelation.target wn31_ss_n2995984 : Db does not contain referenced synset!
 156,37: DIV-2: SynsetRelation.target wn31_ss_n3086983 : Db does not contain referenced synset!
 
-Found 2 warnings in file:/tmp/extracted7993654303317037134/smartphones.xml
+Found 2 warnings in file:/tmp/extracted117819823167262129/smartphones.xml
 Ignoring warnings because of force flag.
 
 XML can be merged!
@@ -357,7 +357,7 @@ Done writing transitive closure for SynsetRelations.
 
    Elapsed time:  0 secs
 
-Elapsed time for import: 1 sec   Started: 2017-03-06 08:43:50   Ended: 2017-03-06 08:43:51
+Elapsed time for import: 1 sec   Started: 2017-03-20 01:53:54   Ended: 2017-03-20 01:53:55
 
 
 
@@ -379,7 +379,7 @@ Connected!
 Going to import 2 files by import author John Doe...
 Loading LMF : classpath:/smartphones.xml ...
 
-Validating XML Schema of /tmp/extracted42581422160542426/smartphones.xml   ...
+Validating XML Schema of /tmp/extracted9176624749246060408/smartphones.xml   ...
 
 XML is valid!
 
@@ -394,7 +394,7 @@ Starting import...
 Done loading LMF : classpath:/smartphones.xml .
 Loading LMF : classpath:/examplicon.xml ...
 
-Validating XML Schema of /tmp/extracted1822986944096662523/examplicon.xml   ...
+Validating XML Schema of /tmp/extracted782713862594385198/examplicon.xml   ...
 
 XML is valid!
 
@@ -432,14 +432,14 @@ Done normalizing SynsetRelations.
 
    No edges were added to the 993,239 existing ones. 
 
-   Elapsed time: 1 min, 38 secs
+   Elapsed time: 1 min, 31 secs
 
 Computing transitive closure for SynsetRelations (may take some minutes) ...
 
    Found 993,239 synset relations.
 
 
-   Elapsed time: 2 mins, 19 secs
+   Elapsed time: 2 mins, 10 secs
 
 
 Going to write closure into the db...
@@ -454,7 +454,7 @@ Done writing transitive closure for SynsetRelations.
 
    Elapsed time:  1 sec
 
-Elapsed time for import: 4 mins, 2 secs   Started: 2017-03-06 08:48:45   Ended: 2017-03-06 08:52:48
+Elapsed time for import: 3 mins, 45 secs   Started: 2017-03-20 01:58:34   Ended: 2017-03-20 02:02:20
 
 
 
@@ -493,21 +493,20 @@ SynsetRelation normalization - processed synsets: 50,000
 SynsetRelation normalization - processed synsets: 60,000
 SynsetRelation normalization - processed synsets: 70,000
 SynsetRelation normalization - processed synsets: 80,000
-SynsetRelation normalization - processed synsets: 90,000
-SynsetRelation normalization - processed synsets: 110,000
+SynsetRelation normalization - processed synsets: 100,000
 
 Done normalizing SynsetRelations.
 
    No edges were added to the 993,239 existing ones. 
 
-   Elapsed time: 1 min, 41 secs
+   Elapsed time: 1 min, 35 secs
 
 Computing transitive closure for SynsetRelations (may take some minutes) ...
 
    Found 993,239 synset relations.
 
 
-   Elapsed time: 2 mins, 15 secs
+   Elapsed time: 2 mins, 13 secs
 
 
 Going to write closure into the db...
@@ -587,7 +586,7 @@ wn31.init,"```bash
 
 Restoring database:   classpath:/div-wn31.h2.db.xz
                 to:   wn31/wn31.h2.db  ...
-Database created in 15 secs
+Database created in 14 secs
 
 ```
 "
@@ -601,7 +600,7 @@ Connected!
 Going to import 1 files by import author John Doe...
 Loading LMF : classpath:/smartphones.xml ...
 
-Validating XML Schema of /tmp/extracted5583348067149447648/smartphones.xml   ...
+Validating XML Schema of /tmp/extracted8642012347223200055/smartphones.xml   ...
 
 XML is valid!
 
@@ -615,7 +614,7 @@ Starting import...
 
 Done loading LMF : classpath:/smartphones.xml .
 Skipping graph augmentation as requested by user.
-Elapsed time for import: 0 secs   Started: 2017-03-06 08:44:19   Ended: 2017-03-06 08:44:20
+Elapsed time for import: 0 secs   Started: 2017-03-20 01:54:23   Ended: 2017-03-20 01:54:23
 
 
 
@@ -650,7 +649,7 @@ Connected!
 Going to import 1 files by import author John Doe...
 Loading LMF : classpath:/smartphones.xml ...
 
-Validating XML Schema of /tmp/extracted4755085107341326601/smartphones.xml   ...
+Validating XML Schema of /tmp/extracted3469452877224107823/smartphones.xml   ...
 
 XML is valid!
 
@@ -661,7 +660,7 @@ Validating import data against the db....
 156,37: DIV-2: SynsetRelation.target wn31_ss_n3086983 : Db does not contain referenced synset!
 
 There were warnings during strict validation:
-Found 2 warnings in file:/tmp/extracted4755085107341326601/smartphones.xml
+Found 2 warnings in file:/tmp/extracted3469452877224107823/smartphones.xml
 
 Import failed, no LexicalResource data was written to disk. Aborting all imports.
 
@@ -681,7 +680,7 @@ Connected!
 Going to import 1 files by import author John Doe...
 Loading LMF : classpath:/smartphones.xml ...
 
-Validating XML Schema of /tmp/extracted3057853183437278765/smartphones.xml   ...
+Validating XML Schema of /tmp/extracted4997857950513689476/smartphones.xml   ...
 
 XML is valid!
 
@@ -719,14 +718,14 @@ Done normalizing SynsetRelations.
 
    No edges were added to the 993,234 existing ones. 
 
-   Elapsed time: 1 min, 36 secs
+   Elapsed time: 1 min, 29 secs
 
 Computing transitive closure for SynsetRelations (may take some minutes) ...
 
    Found 993,234 synset relations.
 
 
-   Elapsed time: 2 mins, 10 secs
+   Elapsed time: 2 mins, 7 secs
 
 
 Going to write closure into the db...
@@ -739,9 +738,9 @@ Done writing transitive closure for SynsetRelations.
    Inserted edges: 60
         hypernym:   60
 
-   Elapsed time:  0 secs
+   Elapsed time:  1 sec
 
-Elapsed time for import: 3 mins, 49 secs   Started: 2017-03-06 08:53:48   Ended: 2017-03-06 08:57:38
+Elapsed time for import: 3 mins, 41 secs   Started: 2017-03-20 02:03:19   Ended: 2017-03-20 02:07:01
 
 
 
@@ -774,7 +773,7 @@ Connected!
 Going to import 1 files by import author John Doe...
 Loading LMF : classpath:/examplicon.xml ...
 
-Validating XML Schema of /tmp/extracted4229983392227567099/examplicon.xml   ...
+Validating XML Schema of /tmp/extracted4785154685932053843/examplicon.xml   ...
 
 XML is valid!
 
@@ -788,7 +787,7 @@ Starting import...
 
 Done loading LMF : classpath:/examplicon.xml .
 Skipping graph augmentation as requested by user.
-Elapsed time for import: 0 secs   Started: 2017-03-06 08:44:21   Ended: 2017-03-06 08:44:22
+Elapsed time for import: 0 secs   Started: 2017-03-20 01:54:24   Ended: 2017-03-20 01:54:25
 
 
 
