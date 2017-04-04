@@ -35,6 +35,7 @@
 *.jar
 *.rar
 *.tar
+!sites/all/modules/diversicon/features/*.tar
 *.zip
 *.tgz
 
