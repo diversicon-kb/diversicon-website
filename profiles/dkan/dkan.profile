@@ -30,6 +30,7 @@ function dkan_additional_setup() {
       array('dkan_markdown_setup', array()),
       array('dkan_enable_optional_module', array('dkan_permissions')),
       array('dkan_enable_optional_module', array('dkan_default_topics')),
+      array('dkan_enable_optional_module', array('dkan_dataset_search')),
       array('dkan_revert_feature',
         array(
           'dkan_sitewide_menu',
@@ -328,6 +329,7 @@ function dkan_misc_variables_set(array &$context) {
     'dataset' => TRUE,
     'admin_views_file' => TRUE,
     'admin_views_node' => TRUE,
+    'admin_views_user' => TRUE,
   );
   variable_set('views_defaults', $views_disable);
 }

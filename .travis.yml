@@ -1,7 +1,10 @@
 language: php
 
 php:
-  - 5.4
+  - '7.2'
+
+services:
+  - mysql
 
 mysql:
   database: dkan_drops_test
@@ -11,12 +14,12 @@ mysql:
 before_script:
   # Install drush
   - cd ..
-  - git clone --branch 6.x https://github.com/drush-ops/drush.git
+  - git clone --branch 8.x https://github.com/drush-ops/drush.git
   - export PATH="`pwd`/drush:$PATH"
   - cd dkan-drops-7
-  # install php packages required for running a web server from drush on php 5.3
-  - sudo apt-get update > /dev/null
-  - sudo apt-get install -y --force-yes php5-cgi php5-mysql
+  # install php packages required for running a web server from drush on php 7.2
+  - sudo apt-get update
+  - sudo apt-get install -y --force-yes php-cgi php-mysql
 
   # disable sendmail
   - echo sendmail_path=`which true` >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
@@ -35,5 +38,5 @@ script:
 notifications:
   slack:
     rooms:
-      - nucivic:t3p2KxXdzymmwxitWPvfAsnK#monitor-devops
-      - nucivic:t3p2KxXdzymmwxitWPvfAsnK#monitor-dkan
+#      - nucivic:t3p2KxXdzymmwxitWPvfAsnK#monitor-devops
+#      - nucivic:t3p2KxXdzymmwxitWPvfAsnK#monitor-dkan

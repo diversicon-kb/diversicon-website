@@ -1,5 +1,80 @@
+7.x-1.18
+-----------
+ - #3012 Prevent infinite loop in Harvest Source preview page
+ - #3002 Add release script and Jenkinsfile
+ - #2733 Decouple search from dkan_panels & other features
+ - #2984 Remove feeds modules
+ - #2985 Remove dreprecated dkan_sitewide_roles_perms module
+ - #3004 Update contrib modules (facet_api, facet_api_bonus, file_entity, honeypot, link, media, media_youtube, panopoly_images)
+ - #2995 Remove 404 redirect
+ - #2968 Stop queuing dataset "log" and only do if > 1min
+ - #2975 Add file hash option
+ - #2983 Separate harvest classes into separate files and do some light cleanup
+ - #3010 Update radix to 3.8
+ - #3008 Add admin_views contrib module
+ - #3007 Fix typo in dkan_datastore_proxy function
+ - #3003 Improve validation for temporal values when harvesting
+ - #2998 Move check for file size into the proxy function
+
+
+7.x-1.17.4
+-----------
+ - #2997 Add views patch 3054091
+ 
+7.x-1.17.3
+-----------
+ - #2996 Security release for Drupal 7.69
+
+7.x-1.17.2
+-----------
+ - #2989 Bump symfony/dependency-injection from 2.8.38 to 2.8.52 in /test
+
+7.x-1.17.1
+-----------
+ - #2982 #2986 Remove admin_views
+ - #2977 Move documentation images to S3
+ - #2959 Remove deprecated ahoy files
+ - #2973 Update list of professional help in docs
+ - #2972 Fix branch/tag in drupal-org.make file
+ - #2967 Upgrade ODSM and enable fast token browser
+ - 5282845 Adjustments to behat tests
+ - 8953e45 Restore phpunit.xml file
+ - #2964 Fix polling places file
+ - #2963 Fix Call to a member function getTimestamp() on null error
+ - fd331bc Update dkan sites list
+
+7.x-1.17
+-----------
+ - #2956 Update new WCAG-compliant default theme colors to be consistent across the site.
+ - #2957 Update frequency values on default content files.
+ - #2954 Update contrib modules, adjust DKAN code to support PHP 7.2
+ - #2951 Update default greetings on workbench email templates.
+ - #2908 Add DKAN Periodic Updates module
+ - #2804 Disable and uninstall feeds, feeds_flatstore_processor, and feeds_field_fetcher modules
+ - #2945 Upgrade imagecache_actions to 1.11
+ - #2944 Specify behavior on dkan_workflow moderation set state action to avoid extra node_save.
+ - #2943 Add documentation for DKAN Feedback
+ - #2940 Update Open Data Schema Map to 7.x-2.4
+ - #2935 Add documentation for DKAN custom solr
+ - #2931 Add patch for NULL controller class
+ - #2921 Fix gaps in WCAG compliance
+
+7.x-1.16.13
+-----------
+ - #2928 Update ODSM to 7.x-2.3 to fix broken RDF/JSON links
+ - #2918 Avoid importing/orphaning when harvest cache is not present for unavailable sources.
+ - #2919 Security update for imagecache_actions
+ 
+7.x-1.16.12
+------------
+ - #2892 Harvest support range dates separated by dashes
+ - #2894 Remove user field on unpublished nodes tab on workbench moderation UI.
+ - #2889 Make Page Title reflect dataset/resource content
+ - #2893 Update Open Data Schema Map to 7.x-2.2
+ - #2885 Security update for uuid and tablefield modules
+ 
 7.x-1.16.11
-----------
+------------
  - #2876 Update the datastore lock code to use drupal functions
  - #2879 Update dkan_workflow to add option to delete unpublished nodes
  - #2880 Fix drush command that deletes orphaned datastore tables
@@ -7,7 +82,7 @@
  - #2878 Remove hard-coded access to revisions for anonymous users
  
 7.x-1.16.10
-----------
+-----------
  - #2874 Security update for Drupal to 7.67 (SA-CORE-2019-007)
  - #2730 Behat test improvements
  - #2862 Add primary key to datastore tables. Create hook_datastore_post_import to allow users to execute actions right after data has been imported into the datastore.
