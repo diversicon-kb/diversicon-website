@@ -64,62 +64,62 @@ function dkan_dataset_content_types_license_subscribed_values() {
 function dkan_dataset_content_types_license_subscribe() {
   return array(
     "cc-by" => array(
-      "label" => "Creative Commons Attribution",
-      "uri" => "http://opendefinition.org/licenses/cc-by/",
+      "label" => t("Creative Commons Attribution"),
+      "uri" => "https://creativecommons.org/licenses/by/4.0/",
     ),
     "cc-by-sa" => array(
-      "label" => "Creative Commons Attribution Share-Alike",
-      "uri" => "http://opendefinition.org/licenses/cc-by-sa/",
+      "label" => t("Creative Commons Attribution Share-Alike"),
+      "uri" => "https://creativecommons.org/licenses/by-sa/4.0/",
     ),
     "cc-zero" => array(
-      "label" => "Creative Commons CCZero",
-      "uri" => "http://opendefinition.org/licenses/cc-zero/",
+      "label" => t("Creative Commons CCZero"),
+      "uri" => "https://creativecommons.org/publicdomain/zero/1.0/",
     ),
     "cc-nc"  => array(
-      "label" => "Creative Commons Non-Commercial (Any)",
-      "uri" => "http://opendefinition.org/licenses/cc-nc/",
+      "label" => t("Creative Commons Non-Commercial (2.5)"),
+      "uri" => "https://creativecommons.org/licenses/by-nc/2.5/",
     ),
     "cc-by-nc-nd" => array(
-      "label" => "Attribution NonCommercial NoDerivatives 4.0 International",
+      "label" => t("Attribution NonCommercial NoDerivatives 4.0 International"),
       "uri" => "https://creativecommons.org/licenses/by-nc-nd/4.0/",
     ),
     "gfdl" => array(
-      "label" => "GNU Free Documentation License",
-      "uri" => "http://opendefinition.org/licenses/gfdl/",
+      "label" => t("GNU Free Documentation License"),
+      "uri" => "https://www.gnu.org/licenses/fdl.html",
     ),
     "odc-by" => array(
-      "label" => "Open Data Commons Attribution License",
-      "uri" => "http://opendefinition.org/licenses/odc-by/",
+      "label" => t("Open Data Commons Attribution License"),
+      "uri" => "https://opendatacommons.org/licenses/by/1.0/",
     ),
     "odc-odbl" => array(
-      "label" => "Open Data Commons Open Database License (ODbL)",
-      "uri" => "http://opendefinition.org/licenses/odc-odbl/",
+      "label" => t("Open Data Commons Open Database License (ODbL)"),
+      "uri" => "https://opendatacommons.org/licenses/odbl/1.0/",
     ),
     "odc-pddl" => array(
-      "label" => "Open Data Commons Public Domain Dedication and Licence (PDDL)",
+      "label" => t("Open Data Commons Public Domain Dedication and Licence (PDDL)"),
       "uri" => "http://opendefinition.org/licenses/odc-pddl/",
     ),
     "uk-ogl" => array(
-      "label" => "UK Open Government Licence (OGL)",
+      "label" => t("UK Open Government Licence (OGL)"),
       "url" => 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/',
     ),
     "other-at" => array(
-      "label" => "Other (Attribution)",
+      "label" => t("Other (Attribution)"),
     ),
     "other-nc" => array(
-      "label" => "Other (Non-Commercial)",
+      "label" => t("Other (Non-Commercial)"),
     ),
     "other-closed" => array(
-      "label" => "Other (Not Open)",
+      "label" => t("Other (Not Open)"),
     ),
     "other-open" => array(
-      "label" => "Other (Open)",
+      "label" => t("Other (Open)"),
     ),
     "other-pd" => array(
-      "label" => "Other (Public Domain)",
+      "label" => t("Other (Public Domain)"),
     ),
     "notspecified" => array(
-      "label" => "License Not Specified",
+      "label" => t("License Not Specified"),
     ),
   );
 }

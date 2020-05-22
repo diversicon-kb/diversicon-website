@@ -129,6 +129,10 @@ class DatasetContext extends RawDKANEntityContext {
     }
 
     switch ($orderby) {
+      case 'Date created':
+        $orderby = 'created';
+        break;
+
       case 'Date changed':
         $orderby = 'changed';
         break;
@@ -237,8 +241,11 @@ class DatasetContext extends RawDKANEntityContext {
     $results = array();
     foreach ($indexes as $index) {
       $query = new SearchApiQuery($index);
+      $filter = $query->createFilter();
+      $filter->condition('type', 'dataset', '=');
 
       $result = $query->condition('status', '1')
+        ->filter($filter)
         ->execute();
       $results[] = $result;
     }

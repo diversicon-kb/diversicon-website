@@ -9591,11 +9591,6 @@ div.horizontal-tabs {
 #dkan-dataset-form-settings .help-block {
   margin: 5px 20px 10px; }
 
-#views-exposed-form-dkan-harvest-datasets-harvest-datasets-source-page .form-group {
-  display: inline-block; }
-  #views-exposed-form-dkan-harvest-datasets-harvest-datasets-source-page .form-group input {
-    width: 100px; }
-
 .view-dkan-harvest-dashboard .view-header {
   margin-bottom: 10px; }
 
@@ -9825,6 +9820,9 @@ section.col-sm-9 {
   .container {
     padding-left: 15px;
     padding-right: 15px; } }
+
+.dropdown:hover .dropdown-menu {
+  display: block; }
 
 .navigation-wrapper .container {
   overflow: visible; }
@@ -11323,5 +11321,11 @@ img {
 #views-exposed-form-dkan-administration-nodes-system-1 .views-widget-filter-date_filter .help-block,
 #views-exposed-form-dkan-administration-files-system-1 .views-widget-filter-date_filter .help-block {
   display: none; }
+
+.views-responsive-grid .views-row {
+  clear: both; }
+
+.view-header {
+  margin-bottom: 1em; }
 
 /*# sourceMappingURL=nuboot_radix.style.css.map */
