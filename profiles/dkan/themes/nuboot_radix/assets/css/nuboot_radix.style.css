@@ -9600,7 +9600,8 @@ div.horizontal-tabs {
   border-style: solid;
   margin-top: 15px; }
   .pane-dkan-harvest-harvest-source-summary .summary-details div {
-    padding: 4px 5px; }
+    padding: 4px 5px;
+    word-wrap: break-word; }
 
 .pane-dkan-harvest-harvest-source-summary h6 {
   background: #eee;
@@ -11036,6 +11037,12 @@ dd {
 dt,
 dd {
   border-top: 1px solid #ddd; }
+
+.datastore-status dt {
+  padding: 8px 5px 8px 25px; }
+
+.datastore-status dl {
+  border-bottom: 1px solid #ddd; }
 
 .item-list .pagination li:first-child > span,
 .item-list .pagination li:first-child > a {

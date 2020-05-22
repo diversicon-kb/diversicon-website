@@ -3,7 +3,7 @@ api: '2'
 core: 7.x
 includes:
 - https://raw.githubusercontent.com/NuCivic/visualization_entity/7.x-2.0/visualization_entity.make
-- https://raw.githubusercontent.com/NuCivic/open_data_schema_map/7.x-2.1/open_data_schema_map.make
+- https://raw.githubusercontent.com/NuCivic/open_data_schema_map/7.x-2.2/open_data_schema_map.make
 - https://raw.githubusercontent.com/NuCivic/leaflet_draw_widget/5a5f8faf664aeca02371f6692307580d9fab9116/leaflet_widget.make
 - https://raw.githubusercontent.com/NuCivic/recline/7.x-2.1/recline.make
 projects:
@@ -61,7 +61,7 @@ projects:
   context:
     version: '3.7'
   ctools:
-    version: '1.14'
+    version: '1.15'
   data:
     version: 1.x
   date:
@@ -73,7 +73,7 @@ projects:
   defaultconfig:
     version: 1.0-alpha11
   devel:
-    version: '1.5'
+    version: '1.7'
   diff:
     version: '3.4'
   double_field:
@@ -161,7 +161,7 @@ projects:
   font_icon_select:
     download:
       type: git
-      url: https://git.drupal.org/sandbox/wolffereast/2319993.git
+      url: https://github.com/GetDKAN/font_icon_select.git
       branch: 7.x-1.x
   fontyourface:
     version: '2.8'
@@ -172,6 +172,8 @@ projects:
       2816837: https://www.drupal.org/files/issues/font_your_face-remove_div_general_text_option-D7.patch
   globalredirect:
     version: '1.6'
+    patch:
+      3053515: https://www.drupal.org/files/issues/2019-05-08/globalredirect-3053515-is-dir-external-check.patch
   gravatar:
     download:
       type: git
@@ -203,7 +205,7 @@ projects:
   libraries:
     version: '2.5'
   link:
-    version: '1.5'
+    version: '1.6'
   link_badges:
     version: '1.1'
   link_iframe_formatter:
@@ -245,7 +247,7 @@ projects:
   migrate_extras:
     version: '2.5'
   module_filter:
-    version: '2.1'
+    version: '2.2'
   multistep:
     download:
       type: git
@@ -280,7 +282,7 @@ projects:
   panopoly_images:
     version: '1.58'
   path_breadcrumbs:
-    version: '3.3'
+    version: '3.4'
   pathauto:
     version: '1.3'
   r4032login:
@@ -314,7 +316,7 @@ projects:
   rules:
     version: '2.11'
   restws:
-    version: '2.7'
+    version: '2.8'
   roleassign:
     version: '1.2'
   safeword:
@@ -329,13 +331,13 @@ projects:
   select_or_other:
     version: '2.24'
   services:
-    version: '3.20'
+    version: '3.24'
   simple_gmap:
     version: '1.4'
   strongarm:
     version: '2.0'
   tablefield:
-    version: '3.2'
+    version: '3.5'
   taxonomy_menu:
     version: '1.6'
   taxonomy_fixtures:
@@ -348,9 +350,12 @@ projects:
   token_tweaks:
     version: 1.x-dev
   uuid:
-    version: '1.2'
+    version: '1.3'
   views:
-    version: '3.20'
+    version: '3.21'
+    patch:
+      2885660: https://www.drupal.org/files/issues/2018-06-28/2885660-13.patch
+      2543562: https://www.drupal.org/files/issues/views-use_query_group_operator_for_main_group-2543562-2.patch
   views_autocomplete_filters:
     version: '1.2'
     patch:
@@ -375,6 +380,7 @@ projects:
     patch:
       2360973: https://www.drupal.org/files/issues/workbench_moderation-install-warnings-2360973-3.patch
       1512442: https://www.drupal.org/files/issues/1512442-20-workbench_moderation-fix_access_check.patch
+      2252871: https://www.drupal.org/files/issues/2252871-workbench_moderation-db_update-6.patch
   xautoload:
     version: '5.7'
 libraries:
